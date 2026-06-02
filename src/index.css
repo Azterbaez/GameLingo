@@ -1,0 +1,126 @@
+html,
+body,
+#root {
+  min-height: 100vh;
+  margin: 0;
+}
+
+.login-page{
+  min-height:100vh;
+  background: linear-gradient(
+    135deg,
+    #1d4ed8,
+    #2563eb,
+    #60a5fa
+  );
+}
+.inicio-page {
+  min-height: 100vh;
+  background: linear-gradient(
+    135deg,
+    #505bfa,
+    #8991fc,
+    #505bfa
+  );
+}
+
+.login-card{
+  background:#4573b1 !important;
+  border-radius:30px !important;
+  box-shadow:0 25px 60px rgba(0,0,0,.2) !important;
+}
+
+.text-naranja{
+  color:#f59e0b !important;
+}
+
+.text-azul-oscuro{
+  color:#143191 !important;
+}
+
+/* PERSONAJES DECORATIVOS */
+
+.floating-character{
+  position:absolute;
+  z-index:1;
+  pointer-events:none;
+
+  animation:
+    entrance 1.5s ease forwards,
+    float 4s ease-in-out infinite;
+
+  opacity:0;
+}
+
+/* Izquierda superior */
+
+.character-1{
+  width:140px;
+
+  top:8%;
+  left:4%;
+
+  animation-delay:0s;
+}
+
+/* Derecha superior */
+
+.character-2{
+  width:170px;
+
+  top:12%;
+  right:4%;
+
+  animation-delay:.3s;
+}
+
+/* Inferior izquierda */
+
+.character-3{
+  width:160px;
+
+  bottom:8%;
+  left:8%;
+
+  animation-delay:.6s;
+}
+
+/* Entrada desde fuera */
+
+@keyframes entrance{
+
+  from{
+    opacity:0;
+    transform:
+      translateY(-300px)
+      scale(.5)
+      rotate(-15deg);
+  }
+
+  to{
+    opacity:1;
+    transform:
+      translateY(0)
+      scale(1)
+      rotate(0deg);
+  }
+
+}
+
+/* Flotación continua */
+
+@keyframes float{
+
+  0%{
+    transform:translateY(0px);
+  }
+
+  50%{
+    transform:translateY(-15px);
+  }
+
+  100%{
+    transform:translateY(0px);
+  }
+
+}
