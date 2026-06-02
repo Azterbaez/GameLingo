@@ -59,14 +59,14 @@ const Register = () => {
     }
 
     setSuccess(
-      "Cuenta creada correctamente. Redirigiendo..."
+      "🎉 Cuenta creada correctamente. Revisa tu correo electrónico y confirma tu cuenta antes de iniciar sesión. Si no encuentras el mensaje, revisa la carpeta de spam."
     );
 
     setLoading(false);
 
     setTimeout(() => {
       navigate("/login");
-    }, 2000);
+    }, 5000);
   };
 
   return (

@@ -12,13 +12,12 @@ import avatarshield from "../assets/image/Avatarshield.png";
 import { usePerfil } from "../context/PerfilContext";
 
 const Perfil = () => {
-  const { perfil, updatePerfil } = usePerfil();
+  const { perfil, updatePerfil, loading } = usePerfil();
 
   const [username, setUsername] = useState("");
   const [bio, setBio] = useState("");
   const [avatar, setAvatar] = useState(avatargiraffe);
 
-  // sincronizar perfil global → local
   useEffect(() => {
     if (!perfil) return;
 
@@ -27,38 +26,48 @@ const Perfil = () => {
     setAvatar(perfil.avatar || avatargiraffe);
   }, [perfil]);
 
-  // guardar cambios
   const handleSave = async () => {
-    await updatePerfil({
+    const ok = await updatePerfil({
       username,
       bio,
       avatar,
     });
 
-    alert("✔ Perfil actualizado correctamente");
+    if (ok) {
+      alert("✔ Perfil actualizado correctamente");
+    } else {
+      alert("❌ Error al actualizar el perfil");
+    }
   };
+
+  if (loading) {
+    return (
+      <div className="perfil-page d-flex justify-content-center align-items-center min-vh-100">
+        <h3 className="text-white">Cargando perfil...</h3>
+      </div>
+    );
+  }
 
   return (
     <div className="perfil-page">
       <Container className="d-flex justify-content-center align-items-center min-vh-100">
         <Card className="p-4 perfil-card shadow-lg">
-
           <h2 className="text-center mb-3">Mi Perfil</h2>
 
-          {/* AVATAR */}
+          {/* Avatar principal */}
           <div className="text-center mb-3">
             <img
-              src={avatar}
+              src={avatar || avatargiraffe}
               className="avatar-preview"
               alt="avatar"
             />
           </div>
 
           <Form>
-
             <Form.Group className="mb-3">
               <Form.Label>Nombre de usuario</Form.Label>
               <Form.Control
+                type="text"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
               />
@@ -74,7 +83,6 @@ const Perfil = () => {
               />
             </Form.Group>
 
-            {/* AVATARES */}
             <Form.Label>Selecciona tu avatar</Form.Label>
 
             <div className="avatar-selector">
@@ -84,28 +92,37 @@ const Perfil = () => {
                 avatarlion,
                 avatarmonkey,
                 avatarowl,
-                avatarshield
+                avatarshield,
               ].map((img, i) => (
                 <img
                   key={i}
                   src={img}
-                  className={`avatar-option ${avatar === img ? "selected" : ""}`}
+                  alt={`avatar-${i}`}
+                  className={`avatar-option ${
+                    avatar === img ? "selected" : ""
+                  }`}
                   onClick={() => setAvatar(img)}
-                  alt="avatar"
                 />
               ))}
             </div>
 
-            <Button className="w-100 mt-3" onClick={handleSave}>
+            <Button
+              type="button"
+              className="w-100 mt-3"
+              onClick={handleSave}
+            >
               Guardar cambios
             </Button>
 
             <div className="text-center mt-4">
-              <Link to="/inicio" style={{ color: "#f59e0b" }}>
+              <Link
+                to="/inicio"
+                className="fw-bold text-decoration-none"
+                style={{ color: "#f59e0b" }}
+              >
                 Regresar
               </Link>
             </div>
-
           </Form>
         </Card>
       </Container>

@@ -14,27 +14,6 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
   // =========================
-  // OBTENER SESIÓN ACTUAL
-  // =========================
-
-  useEffect(() => {
-    getCurrentSession();
-
-    // ESCUCHAR CAMBIOS DE AUTH
-    const {
-      data: { subscription },
-    } = supabase.auth.onAuthStateChange(
-      async (_event, session) => {
-        setUser(session?.user ?? null);
-        setLoading(false);
-      }
-    );
-
-    // LIMPIAR
-    return () => subscription.unsubscribe();
-  }, []);
-
-  // =========================
   // SESIÓN ACTUAL
   // =========================
 
@@ -48,47 +27,83 @@ export const AuthProvider = ({ children }) => {
   };
 
   // =========================
+  // LISTENER AUTH
+  // =========================
+
+  useEffect(() => {
+    getCurrentSession();
+
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange(
+      async (_event, session) => {
+        setUser(session?.user ?? null);
+        setLoading(false);
+      }
+    );
+
+    return () => subscription.unsubscribe();
+  }, []);
+
+  // =========================
   // REGISTRO
   // =========================
 
-  const signUp = async (email, password, username) => {
+  const signUp = async (
+    email,
+    password,
+    username
+  ) => {
     try {
-      // REGISTRO AUTH
-      const { data, error } = await supabase.auth.signUp({
-        email,
-        password,
-      });
+      const { data, error } =
+        await supabase.auth.signUp({
+          email,
+          password,
+          options: {
+            data: {
+              username,
+            },
+          },
+        });
 
       if (error) throw error;
 
-      // CREAR PROFILE
-      if (data.user) {
-  const { error: profileError } = await supabase
-    .from("profiles")
-    .insert([
-      {
-        id: data.user.id,
-        username,
-        level: 1,
-        xp: 0,
-        streak_days: 0,
-        avatar_url: null,
-        bio: "",
-      },
-    ]);
+      // Intentar crear perfil inmediatamente
+      if (data?.user) {
+        const { error: profileError } =
+          await supabase
+            .from("profiles")
+            .upsert([
+              {
+                id: data.user.id,
+                username,
+                bio: "",
+                avatar_url: null,
+                level: 1,
+                xp: 0,
+                streak_days: 0,
+              },
+            ]);
 
-  if (profileError) throw profileError;
-}
-
-      
+        if (profileError) {
+          console.error(
+            "Error creando perfil:",
+            profileError
+          );
+        }
+      }
 
       return {
         success: true,
       };
     } catch (error) {
+      console.error(error);
+
       return {
         success: false,
-        message: error.message,
+        message:
+          error.message ||
+          "Error al crear la cuenta",
       };
     }
   };
@@ -97,7 +112,10 @@ export const AuthProvider = ({ children }) => {
   // LOGIN
   // =========================
 
-  const signIn = async (email, password) => {
+  const signIn = async (
+    email,
+    password
+  ) => {
     try {
       const { error } =
         await supabase.auth.signInWithPassword({
@@ -113,7 +131,9 @@ export const AuthProvider = ({ children }) => {
     } catch (error) {
       return {
         success: false,
-        message: error.message,
+        message:
+          error.message ||
+          "Error al iniciar sesión",
       };
     }
   };
@@ -123,7 +143,20 @@ export const AuthProvider = ({ children }) => {
   // =========================
 
   const signOut = async () => {
-    await supabase.auth.signOut();
+    try {
+      await supabase.auth.signOut();
+
+      setUser(null);
+
+      return {
+        success: true,
+      };
+    } catch (error) {
+      return {
+        success: false,
+        message: error.message,
+      };
+    }
   };
 
   // =========================
@@ -133,7 +166,6 @@ export const AuthProvider = ({ children }) => {
   const value = {
     user,
     loading,
-
     signUp,
     signIn,
     signOut,
