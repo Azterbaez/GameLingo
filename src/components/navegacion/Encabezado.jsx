@@ -65,7 +65,11 @@ const Encabezado = () => {
             width="60"
             height="60"
             className="me-2"
-            style={{ borderRadius: "40px" }}
+              style={{
+    borderRadius: "50%",
+    border: "4px solid #e4b313",
+   
+  }}
           />
 
           <div className="me-3">
@@ -84,6 +88,11 @@ const Encabezado = () => {
               src={perfil?.avatar || avatargiraffe}
               className="avatar-header"
               alt="avatar"
+                style={{
+    borderRadius: "50%",
+    border: "4px solid #e4b313",
+   
+  }}
             />
 
             <div className="user-info">

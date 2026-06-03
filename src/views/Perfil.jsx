@@ -8,6 +8,26 @@ import avatarlion from "../assets/image/Avatarlion.png";
 import avatarmonkey from "../assets/image/Avatarmonkey.png";
 import avatarowl from "../assets/image/Avatarowl.png";
 import avatarshield from "../assets/image/Avatarshield.png";
+import avatarzorra from "../assets/image/Avatarzorra.png";
+import avatarF1 from "../assets/image/avatarF1.png";
+import avatarF2 from "../assets/image/avatarF2.png";
+import avatarF3 from "../assets/image/avatarF3.png";
+import avatarF4 from "../assets/image/avatarF4.png";
+import avatarF5 from "../assets/image/avatarF5.png";
+import avatarM1 from "../assets/image/avatarM1.png";
+import avatarM2 from "../assets/image/avatarM2.png";
+import avatarM3 from "../assets/image/avatarM3.png";
+import avatarM4 from "../assets/image/avatarM4.png";
+import avatarM5 from "../assets/image/avatarM5.png";
+
+
+
+
+
+
+
+
+
 
 import { usePerfil } from "../context/PerfilContext";
 
@@ -60,6 +80,10 @@ const Perfil = () => {
               src={avatar || avatargiraffe}
               className="avatar-preview"
               alt="avatar"
+                style={{
+    borderRadius: "50%",
+    border: "4px solid #e4b313",
+  }}
             />
           </div>
 
@@ -93,11 +117,27 @@ const Perfil = () => {
                 avatarmonkey,
                 avatarowl,
                 avatarshield,
+                avatarzorra,
+                avatarF1,
+                avatarF2,
+                avatarF3,
+                avatarF4,
+                avatarF5,
+                avatarM1,
+                avatarM2,
+                avatarM3,
+                avatarM4,
+                avatarM5,
               ].map((img, i) => (
                 <img
                   key={i}
                   src={img}
                   alt={`avatar-${i}`}
+                  style={{
+    borderRadius: "50%",
+    border: "4px solid #e4b313",
+   
+  }}
                   className={`avatar-option ${
                     avatar === img ? "selected" : ""
                   }`}
