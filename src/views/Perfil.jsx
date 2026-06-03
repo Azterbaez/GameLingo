@@ -8,7 +8,7 @@ import avatarlion from "../assets/image/Avatarlion.png";
 import avatarmonkey from "../assets/image/Avatarmonkey.png";
 import avatarowl from "../assets/image/Avatarowl.png";
 import avatarshield from "../assets/image/Avatarshield.png";
-import avatarzorra from "../assets/image/Avatarzorra.png";
+import avatarzorra from "../assets/image/avatarzorra.png";
 import avatarF1 from "../assets/image/avatarF1.png";
 import avatarF2 from "../assets/image/avatarF2.png";
 import avatarF3 from "../assets/image/avatarF3.png";
