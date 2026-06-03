@@ -21,14 +21,6 @@ import avatarM4 from "../assets/image/avatarM4.png";
 import avatarM5 from "../assets/image/avatarM5.png";
 
 
-
-
-
-
-
-
-
-
 import { usePerfil } from "../context/PerfilContext";
 
 const Perfil = () => {
