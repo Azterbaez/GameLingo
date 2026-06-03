@@ -9,6 +9,12 @@ import { PerfilProvider } from "./context/PerfilContext";
 import RutaProtegida from "./components/rutas/RutasProtegida";
 import { UserProvider } from "./context/UserContext";
 import Encabezado from "./components/navegacion/Encabezado";
+import { LearningProvider } from "./context/LearningContext";
+import AppLayout from "./components/layout/AppLayout";
+import AprenderView from "./views/AprenderView";
+import NivelesView from "./views/aprendizaje/NivelesView";
+import TemasView from "./views/aprendizaje/TemasView";
+import TemaDetalleView from "./views/aprendizaje/TemaDetalleView";
 
 
 
@@ -32,6 +38,27 @@ function Layout() {
           </RutaProtegida>
         }
       />
+
+      <Route
+        path="/aprender"
+        element={
+          <RutaProtegida>
+            <LearningProvider>
+              <AppLayout />
+            </LearningProvider>
+          </RutaProtegida>
+        }
+      >
+        <Route element={<AprenderView />}>
+          <Route index element={<NivelesView />} />
+          <Route path="niveles" element={<NivelesView />} />
+          <Route path="niveles/:levelId/temas" element={<TemasView />} />
+          <Route
+            path="niveles/:levelId/temas/:topicId/actividades"
+            element={<TemaDetalleView />}
+          />
+        </Route>
+      </Route>
     </Routes>
   );
 }

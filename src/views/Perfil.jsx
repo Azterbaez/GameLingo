@@ -61,105 +61,138 @@ const Perfil = () => {
   }
 
   return (
-    <div className="perfil-page">
-      <Container className="d-flex justify-content-center align-items-center min-vh-100">
-        <Card className="p-4 perfil-card shadow-lg">
-          <h2 className="text-center mb-3">Mi Perfil</h2>
+  <div className="perfil-page">
+    <Container className="d-flex justify-content-center align-items-center min-vh-100 py-5">
+      <Card
+        className="shadow-lg border-0"
+        style={{
+          width: "100%",
+          maxWidth: "750px",
+          borderRadius: "25px",
+          padding: "30px",
+        }}
+      >
+        <h2 className="text-center mb-4 fw-bold">
+          Mi Perfil
+        </h2>
 
-          {/* Avatar principal */}
-          <div className="text-center mb-3">
-            <img
-              src={avatar || avatargiraffe}
-              className="avatar-preview"
-              alt="avatar"
-                style={{
-    borderRadius: "50%",
-    border: "4px solid #e4b313",
-  }}
+        {/* Avatar principal */}
+        <div className="text-center mb-4">
+          <img
+            src={avatar || avatargiraffe}
+            alt="Avatar seleccionado"
+            style={{
+              width: "140px",
+              height: "140px",
+              borderRadius: "50%",
+              border: "5px solid #e4b313",
+              objectFit: "cover",
+            }}
+          />
+        </div>
+
+        <Form>
+          <Form.Group className="mb-3">
+            <Form.Label>Nombre de usuario</Form.Label>
+
+            <Form.Control
+              type="text"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
             />
+          </Form.Group>
+
+          <Form.Group className="mb-4">
+            <Form.Label>Descripción</Form.Label>
+
+            <Form.Control
+              as="textarea"
+              rows={4}
+              value={bio}
+              onChange={(e) => setBio(e.target.value)}
+            />
+          </Form.Group>
+
+          <Form.Label className="fw-bold mb-3">
+            Selecciona tu avatar
+          </Form.Label>
+
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns:
+                "repeat(auto-fill, minmax(90px, 1fr))",
+              gap: "15px",
+              justifyItems: "center",
+            }}
+          >
+            {[
+              avatargiraffe,
+              avatarkoala,
+              avatarlion,
+              avatarmonkey,
+              avatarowl,
+              avatarshield,
+              avatarzorra,
+              avatarF1,
+              avatarF2,
+              avatarF3,
+              avatarF4,
+              avatarF5,
+              avatarM1,
+              avatarM2,
+              avatarM3,
+              avatarM4,
+              avatarM5,
+            ].map((img, i) => (
+              <img
+                key={i}
+                src={img}
+                alt={`avatar-${i}`}
+                onClick={() => setAvatar(img)}
+                style={{
+                  width: "85px",
+                  height: "85px",
+                  borderRadius: "50%",
+                  objectFit: "cover",
+                  cursor: "pointer",
+                  transition: "0.3s",
+
+                  border:
+                    avatar === img
+                      ? "4px solid #1e40af"
+                      : "3px solid #e4b313",
+
+                  transform:
+                    avatar === img
+                      ? "scale(1.1)"
+                      : "scale(1)",
+                }}
+              />
+            ))}
           </div>
 
-          <Form>
-            <Form.Group className="mb-3">
-              <Form.Label>Nombre de usuario</Form.Label>
-              <Form.Control
-                type="text"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-              />
-            </Form.Group>
+          <Button
+            type="button"
+            className="w-100 mt-4"
+            onClick={handleSave}
+          >
+            Guardar cambios
+          </Button>
 
-            <Form.Group className="mb-3">
-              <Form.Label>Descripción</Form.Label>
-              <Form.Control
-                as="textarea"
-                rows={3}
-                value={bio}
-                onChange={(e) => setBio(e.target.value)}
-              />
-            </Form.Group>
-
-            <Form.Label>Selecciona tu avatar</Form.Label>
-
-            <div className="avatar-selector">
-              {[
-                avatargiraffe,
-                avatarkoala,
-                avatarlion,
-                avatarmonkey,
-                avatarowl,
-                avatarshield,
-                avatarzorra,
-                avatarF1,
-                avatarF2,
-                avatarF3,
-                avatarF4,
-                avatarF5,
-                avatarM1,
-                avatarM2,
-                avatarM3,
-                avatarM4,
-                avatarM5,
-              ].map((img, i) => (
-                <img
-                  key={i}
-                  src={img}
-                  alt={`avatar-${i}`}
-                  style={{
-    borderRadius: "50%",
-    border: "4px solid #e4b313",
-   
-  }}
-                  className={`avatar-option ${
-                    avatar === img ? "selected" : ""
-                  }`}
-                  onClick={() => setAvatar(img)}
-                />
-              ))}
-            </div>
-
-            <Button
-              type="button"
-              className="w-100 mt-3"
-              onClick={handleSave}
+          <div className="text-center mt-4">
+            <Link
+              to="/inicio"
+              className="fw-bold text-decoration-none"
+              style={{ color: "#f59e0b" }}
             >
-              Guardar cambios
-            </Button>
-
-            <div className="text-center mt-4">
-              <Link
-                to="/inicio"
-                className="fw-bold text-decoration-none"
-                style={{ color: "#f59e0b" }}
-              >
-                Regresar
-              </Link>
-            </div>
-          </Form>
-        </Card>
-      </Container>
-    </div>
-  );
+              Regresar
+            </Link>
+          </div>
+        </Form>
+      </Card>
+    </Container>
+  </div>
+);
 };
-
 export default Perfil;

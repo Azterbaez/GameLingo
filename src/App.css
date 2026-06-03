@@ -473,3 +473,133 @@ img.avatar-option{
 .avatar-header:hover {
   transform: scale(1.1);
 }
+
+/* =========================
+   APRENDIZAJE — SUBENCABEZADO
+========================= */
+
+.subheader-niveles {
+  position: fixed;
+  top: 76px;
+  left: 0;
+  right: 0;
+  z-index: 1020;
+  background: linear-gradient(90deg, #1e3a8a, #2563eb, #1e3a8a);
+  border-bottom: 2px solid rgba(245, 158, 11, 0.45);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+}
+
+.subheader-niveles__lista {
+  display: flex;
+  align-items: stretch;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  list-style: none;
+  margin: 0;
+  padding: 0.65rem 0;
+}
+
+.subheader-niveles__paso {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.subheader-niveles__separador {
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 0.75rem;
+  margin-right: 0.15rem;
+}
+
+.subheader-niveles__boton {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.1rem;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  padding: 0.4rem 0.85rem;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, transform 0.2s;
+}
+
+.subheader-niveles__boton:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.16);
+  border-color: rgba(245, 158, 11, 0.5);
+}
+
+.subheader-niveles__paso--activo .subheader-niveles__boton {
+  background: rgba(245, 158, 11, 0.22);
+  border-color: #f59e0b;
+}
+
+.subheader-niveles__paso--deshabilitado .subheader-niveles__boton {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.subheader-niveles__etiqueta {
+  font-weight: 700;
+  font-size: 0.9rem;
+  line-height: 1.2;
+}
+
+.subheader-niveles__detalle {
+  font-size: 0.72rem;
+  color: #fde68a;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.learn-main {
+  margin-top: 132px;
+  min-height: calc(100vh - 132px);
+  padding: 1rem 0 2rem;
+  background: linear-gradient(135deg, #505bfa, #8991fc, #505bfa);
+}
+
+.perfil-page{
+  min-height:100vh;
+  background:linear-gradient(
+    135deg,
+    #1e40af,
+    #60a5fa
+  );
+}
+
+@media (max-width:768px){
+
+  .perfil-page .card{
+    margin:15px;
+    padding:20px !important;
+  }
+
+  .perfil-page img[alt="Avatar seleccionado"]{
+    width:120px !important;
+    height:120px !important;
+  }
+}
+
+.subheader-niveles {
+  position: sticky;
+  top: 95px;
+  z-index: 1000;
+  background: rgb(17, 15, 131);
+  border-bottom: 1px solid #144fc5;
+}
+.main-content {
+  padding-top: 150px;
+}
+
+.encabezado-principal {
+  z-index: 1100;
+}
+
+.subheader-niveles {
+  position: sticky;
+  top: 95px;
+  z-index: 1090;
+  background: #521399;
+}

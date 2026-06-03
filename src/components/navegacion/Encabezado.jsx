@@ -44,14 +44,15 @@ const Encabezado = () => {
 
   return (
     <Navbar
-      expand="md"
-      fixed="top"
-      className="shadow-lg"
-      style={{
-        background:
-          "linear-gradient(9deg, #1e40af, rgb(245, 194, 98), #1e40af)",
-      }}
-    >
+  expand="md"
+  fixed="top"
+  className="shadow-lg"
+  style={{
+    minHeight: "75px",
+    background:
+      "linear-gradient(9deg, #1e40af, rgb(245, 194, 98), #1e40af)",
+  }}
+>
       <Container>
 
         {/* LOGO + TITULO + PERFIL MINI RPG */}
@@ -89,6 +90,8 @@ const Encabezado = () => {
               className="avatar-header"
               alt="avatar"
                 style={{
+                  width: "70px",
+    height: "70px",
     borderRadius: "50%",
     border: "4px solid #e4b313",
    
@@ -135,7 +138,33 @@ const Encabezado = () => {
               </Nav.Link>
 
               <hr />
+              
+{/* SOLO MOVIL */}
+<div className="d-block d-md-none">
 
+  <hr />
+
+  <h6 className="fw-bold text-primary">
+    Ruta de aprendizaje
+  </h6>
+
+  <Nav.Link onClick={() => manejarNavegacion("/learn")}>
+    📚 Niveles
+  </Nav.Link>
+
+  <Nav.Link onClick={() => manejarNavegacion(`/learn/${levelId}/temas`)}>
+    📖 Temas
+  </Nav.Link>
+
+  <Nav.Link
+    onClick={() =>
+      manejarNavegacion(`/learn/${levelId}/${topicId}/actividades`)
+    }
+  >
+    🎮 Actividades
+  </Nav.Link>
+
+</div>
               <Nav.Link
                 onClick={cerrarSesion}
                 style={{ color: "#ef4444", fontWeight: "600" }}
@@ -154,6 +183,8 @@ const Encabezado = () => {
                     Nivel {perfil?.level ?? 1}
                   </small>
                 </div>
+                
+                
               )}
 
             </Nav>
