@@ -27,6 +27,7 @@ const Encabezado = () => {
   // 🔥 LOGOUT LIMPIO
   const cerrarSesion = async () => {
     try {
+      setMostrarMenu(false);
       await supabase.auth.signOut();
 
       // 🔥 limpiar estado global del usuario
@@ -34,7 +35,7 @@ const Encabezado = () => {
 
       localStorage.removeItem("usuario-supabase");
 
-      navigate("/login");
+      navigate("/login", { replace: true });
     } catch (err) {
       console.error("Error cerrando sesión:", err.message);
     }
@@ -121,6 +122,7 @@ const Encabezado = () => {
           placement="end"
           show={mostrarMenu}
           onHide={() => setMostrarMenu(false)}
+          className="menu-lateral"
         >
           <Offcanvas.Header closeButton>
             <Offcanvas.Title>GameLingo</Offcanvas.Title>
@@ -136,6 +138,7 @@ const Encabezado = () => {
               <Nav.Link onClick={() => manejarNavegacion("/perfil")}>
                 Perfil
               </Nav.Link>
+
 
               <hr />
               

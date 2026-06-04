@@ -82,8 +82,8 @@ const Perfil = () => {
             src={avatar || avatargiraffe}
             alt="Avatar seleccionado"
             style={{
-              width: "140px",
-              height: "140px",
+              width: "85px",
+              height: "85px",
               borderRadius: "50%",
               border: "5px solid #e4b313",
               objectFit: "cover",
@@ -112,6 +112,25 @@ const Perfil = () => {
               onChange={(e) => setBio(e.target.value)}
             />
           </Form.Group>
+
+  <Button
+            type="button"
+            className="w-100 mt-4"
+            onClick={handleSave}
+          >
+            Guardar cambios
+             
+          </Button>
+<div className="text-center mt-2">
+            <Link
+              to="/inicio"
+              className="fw-bold text-decoration-none"
+              style={{ color: "#f59e0b" }}
+            >
+              Regresar
+            </Link>
+          </div>
+         
 
           <Form.Label className="fw-bold mb-3">
             Selecciona tu avatar
@@ -151,8 +170,8 @@ const Perfil = () => {
                 alt={`avatar-${i}`}
                 onClick={() => setAvatar(img)}
                 style={{
-                  width: "85px",
-                  height: "85px",
+                  width: "60px",
+                  height: "60px",
                   borderRadius: "50%",
                   objectFit: "cover",
                   cursor: "pointer",
@@ -172,23 +191,7 @@ const Perfil = () => {
             ))}
           </div>
 
-          <Button
-            type="button"
-            className="w-100 mt-4"
-            onClick={handleSave}
-          >
-            Guardar cambios
-          </Button>
-
-          <div className="text-center mt-4">
-            <Link
-              to="/inicio"
-              className="fw-bold text-decoration-none"
-              style={{ color: "#f59e0b" }}
-            >
-              Regresar
-            </Link>
-          </div>
+        
         </Form>
       </Card>
     </Container>
