@@ -134,8 +134,8 @@ const Login = () => {
   style={{
     width: "85px",
     height: "85px",
-    borderRadius: "50%",
-    border: "4px solid #e4b313",
+    borderRadius: "70%",
+    border: "7px solid rgba(8, 22, 209, 1)",
     objectFit: "cover"
   }}
 />
