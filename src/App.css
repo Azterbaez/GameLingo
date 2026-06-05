@@ -272,6 +272,77 @@ body {
   transform: translateY(-2px);
 }
 
+.informacion-page {
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(180deg, #2d50c5 0%, #ec9411 100%);
+}
+
+.informacion-content {
+  position: relative;
+  z-index: 2;
+}
+
+.informacion-bg-shape {
+  position: absolute;
+  border-radius: 24px;
+  background: rgba(37, 40, 226, 0.18);
+  filter: blur(0.5px);
+  box-shadow: 0 28px 60px rgba(137, 138, 189, 0.89);
+  z-index: 1;
+}
+
+.shape-book-1 {
+  top: -40px;
+  left: -30px;
+  width: 220px;
+  height: 260px;
+  transform: rotate(-12deg);
+}
+
+.shape-book-2 {
+  top: 20%;
+  right: -60px;
+  width: 260px;
+  height: 220px;
+  transform: rotate(18deg);
+}
+
+.shape-book-3 {
+  bottom: -40px;
+  left: 10%;
+  width: 200px;
+  height: 220px;
+  transform: rotate(8deg);
+}
+
+.info-card {
+  transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+  border: 1px solid rgba(37, 99, 235, 0.08) !important;
+}
+
+.info-card:hover,
+.info-card:focus-visible {
+  transform: translateY(-10px) scale(1.01);
+  box-shadow: 0 24px 60px rgba(18, 83, 218, 0.14);
+  border-color: rgba(245, 159, 11, 0.692) !important;
+  outline: none;
+}
+
+.informacion-actions .btn-primary {
+  background: #1d4ed8 !important;
+}
+
+.informacion-actions .btn-outline-primary {
+  border-color: #1d4ed8 !important;
+  color: #1d4ed8 !important;
+}
+
+.informacion-actions .btn-outline-primary:hover {
+  background: rgba(189, 187, 187, 0.08) !important;
+}
+
 /* =========================
    EFECTOS DE FONDO
 ========================= */

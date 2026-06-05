@@ -3,6 +3,7 @@ import { AuthProvider } from "./context/AuthContext";
 
 import Login from "./views/Login";
 import Register from "./views/Register";
+import Informacion from "./views/Informacion";
 import Inicio from "./views/Inicio";
 import Perfil from "./views/Perfil";
 import { PerfilProvider } from "./context/PerfilContext";
@@ -21,9 +22,10 @@ import TemaDetalleView from "./views/aprendizaje/TemaDetalleView";
 function Layout() {
   return (
     <Routes>
-      <Route path="/" element={<Login />} />
+      <Route path="/" element={<Informacion />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
+      <Route path="/informacion" element={<Informacion />} />
 
       <Route path="/perfil" element={<Perfil />} />
 
