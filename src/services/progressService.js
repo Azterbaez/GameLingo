@@ -1,6 +1,6 @@
 import { supabase } from "../assets/database/supabaseconfig";
 
-const TABLE = "user_progress";
+const TABLE = "user_progress_data";
 
 export async function getProgress(userId) {
 	if (!userId) return {};
