@@ -12,11 +12,14 @@ const Informacion = () => {
       <Container className="py-5 position-relative informacion-content">
       <Row className="justify-content-center mb-4">
         <Col xs={12} md={10} lg={8}>
-          <h1 className="display-8 text-center">Game Lingo</h1>
-          <p className="lead text-center text-muted">
-            Esta plataforma te ayuda a aprender el ingles jugando  e interactuando con el idioma,
-            encontraras ejercicios, juegos y herramientas pensadas para que logres un 
-            avanza paso apaso a tu ritmo y logres tus metas.
+          <h1 className="display-8 text-center text-azul-oscuro fw-bold">Game Lingo</h1>
+          <p className="lead text-center text-azul-oscuro fw-bold">
+            Domina el inglés con una experiencia de aprendizaje profesional y atractiva.
+            Aquí encontrarás contenidos, desafíos y ejercicios pensados para que avances
+            con claridad y confianza.
+          </p>
+          <p className="text-center text-azul-oscuro opacity-75 fw-bold">
+            Diseñado para alumnos que quieren resultados reales, paso a paso y a su propio ritmo.
           </p>
         </Col>
       </Row>
@@ -25,10 +28,10 @@ const Informacion = () => {
         <Col md={4}>
           <Card className="info-card h-100 shadow-sm" tabIndex="0">
             <Card.Body>
-              <Card.Title>¿Por qué usar esta página?</Card.Title>
+              <Card.Title>Enfoque profesional</Card.Title>
               <Card.Text>
-                Aprender de forma estructurada y entretenida y clara para mejorar
-                tu retención y dominio del idioma para un progreso y metas claras.
+                Aprende con una metodología clara y estructurada que te ayuda a interiorizar
+                conceptos y mejorar tu fluidez de forma sostenida.
               </Card.Text>
             </Card.Body>
           </Card>
@@ -36,10 +39,10 @@ const Informacion = () => {
         <Col md={4}>
           <Card className="info-card h-100 shadow-sm" tabIndex="0">
             <Card.Body>
-              <Card.Title>¿Sabías que?</Card.Title>
+              <Card.Title>Aprende con claridad</Card.Title>
               <Card.Text>
-                En estas web Puedes encontrar contenido organizado por niveles, temas como tambien ejercicios que
-                se adaptaran a tus habilidades  y progreso de estudio.
+                Descubre contenidos organizados por niveles y temas, con ejercicios que se adaptan
+                a tu ritmo de avance y a tus necesidades reales.
               </Card.Text>
             </Card.Body>
           </Card>
@@ -47,13 +50,10 @@ const Informacion = () => {
         <Col md={4}>
           <Card className="info-card h-100 shadow-sm" tabIndex="0">
             <Card.Body>
-              <Card.Title>!Que esperas¡</Card.Title>
+              <Card.Title>Tu progreso asegurado</Card.Title>
               <Card.Text>
-                Inicia sesión o regístrate para comenzar este increible viaje al fabuloso mundo del idioma y sus frontera.
-                </Card.Text>
-                
-                <Card.Text>
-                Recuerda registrarte para acceder a todas las funcionalidades.
+                Regístrate para guardar tu avance, desbloquear todas las herramientas y
+                continuar desde donde lo dejaste en cualquier momento.
               </Card.Text>
             </Card.Body>
           </Card>

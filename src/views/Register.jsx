@@ -59,7 +59,7 @@ const Register = () => {
     }
 
     setSuccess(
-      "🎉 Cuenta creada correctamente. Revisa tu correo electrónico y confirma tu cuenta antes de iniciar sesión. Si no encuentras el mensaje, revisa la carpeta de spam."
+      "🎉 Tu cuenta se creó con éxito. Revisa tu correo electrónico para confirmar tu registro y poder iniciar sesión. Si no ves el mensaje, revisa la carpeta de spam."
     );
 
     setLoading(false);
@@ -149,9 +149,9 @@ const Register = () => {
                     </div>
                   </div>
 
-                  <h2 className="fw-bold mb-2">Crear Cuenta</h2>
+                  <h2 className="fw-bold mb-2">Crea tu cuenta</h2>
 
-                  <p className="text-muted">Únete a GameLingo</p>
+                  <p className="text-muted">Regístrate y comienza a aprender con GameLingo.</p>
                 </div>
 
                 {error && (
@@ -182,7 +182,7 @@ const Register = () => {
                         placeholder="Name"
                         value={username}
                         onChange={(e) => setUsername(e.target.value)}
-                        className="custom-input"
+                        className="custom-input ui-input"
                         required
                       />
                     </InputGroup>
@@ -203,7 +203,7 @@ const Register = () => {
                         placeholder="correo@gmail.com"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        className="custom-input"
+                        className="custom-input ui-input"
                         required
                       />
                     </InputGroup>
@@ -224,7 +224,7 @@ const Register = () => {
                         placeholder="********"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
-                        className="custom-input"
+                        className="custom-input ui-input"
                         required
                       />
                     </InputGroup>
@@ -245,7 +245,7 @@ const Register = () => {
                         placeholder="********"
                         value={confirmPassword}
                         onChange={(e) => setConfirmPassword(e.target.value)}
-                        className="custom-input"
+                        className="custom-input ui-input"
                         required
                       />
                     </InputGroup>
@@ -254,7 +254,7 @@ const Register = () => {
                   <Button
                     type="submit"
                     disabled={loading}
-                    className="login-btn w-100 py-2 fw-bold rounded-1"
+                    className="login-btn ui-btn-primary w-100 py-2 fw-bold rounded-1"
                   >
                     {loading ? (
                       <>
@@ -276,7 +276,7 @@ const Register = () => {
 
                 <div className="text-center mt-4">
                   <p className="mb-0">
-                    ¿Ya tienes una cuenta?{" "}
+                    ¿Ya formas parte de GameLingo? {" "}
                     <Link
                       to="/login"
                       className="fw-bold text-decoration-none"

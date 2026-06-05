@@ -19,7 +19,10 @@ const NivelesView = () => {
 
   return (
     <Container className="py-4">
-      <h2 className="text-white fw-bold mb-3">Elige tu nivel</h2>
+      <h2 className="text-white fw-bold mb-3">Selecciona tu nivel de estudio</h2>
+      <p className="text-white-50 mb-4">
+        Elige el nivel que mejor se ajusta a tu habilidad actual y comienza a practicar con actividades diseñadas para ti.
+      </p>
       <div className="d-flex flex-wrap gap-2">
         {NIVELES_DEMO.map((nivel) => (
           <Button key={nivel.id} variant="warning" onClick={() => elegirNivel(nivel)}>

@@ -36,6 +36,7 @@ function Layout() {
             <>
               <Encabezado />
               <Inicio />
+            
             </>
           </RutaProtegida>
         }

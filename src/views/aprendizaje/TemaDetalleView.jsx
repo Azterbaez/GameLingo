@@ -13,9 +13,9 @@ const TemaDetalleView = () => {
 
   return (
     <Container className="py-4">
-      <h2 className="text-white fw-bold mb-2">Actividades</h2>
+      <h2 className="text-white fw-bold mb-2">Actividades disponibles</h2>
       <p className="text-white-50 mb-4">
-        {temaSeleccionado?.nombre ?? topicId} · nivel {levelId?.toUpperCase()}
+        Tema: {temaSeleccionado?.nombre ?? topicId} · Nivel {levelId?.toUpperCase()}
       </p>
       <ul className="list-group">
         {ACTIVIDADES_DEMO.map((act) => (

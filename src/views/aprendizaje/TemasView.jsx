@@ -25,9 +25,12 @@ const TemasView = () => {
 
   return (
     <Container className="py-4">
-      <h2 className="text-white fw-bold mb-3">Temas del nivel {levelId?.toUpperCase()}</h2>
+      <h2 className="text-white fw-bold mb-3">Temas disponibles · Nivel {levelId?.toUpperCase()}</h2>
+      <p className="text-white-50 mb-4">
+        Selecciona un tema para ver las actividades relacionadas y empezar a practicar de inmediato.
+      </p>
       {temas.length === 0 ? (
-        <p className="text-white-50">No hay temas para este nivel aún.</p>
+        <p className="text-white-50">Por el momento no hay temas disponibles para este nivel.</p>
       ) : (
         <div className="d-flex flex-wrap gap-2">
           {temas.map((tema) => (

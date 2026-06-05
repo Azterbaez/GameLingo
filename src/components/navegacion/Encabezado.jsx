@@ -7,6 +7,7 @@ import avatargiraffe from "../../assets/image/Avatargiraffe.png";
 
 import { usePerfil } from "../../context/PerfilContext";
 import { supabase } from "../../assets/database/supabaseconfig";
+import NotificacionOperacion from "../NotificacionOperacione";
 
 const Encabezado = () => {
   const [mostrarMenu, setMostrarMenu] = useState(false);
@@ -34,16 +35,27 @@ const Encabezado = () => {
       setPerfil(null);
 
       localStorage.removeItem("usuario-supabase");
+      // show notification then navigate to informacion
+      setMostrarNoti(true);
+      setNotiMensaje("Sesión cerrada correctamente.");
+      setNotiTipo("advertencia");
 
-      navigate("/login", { replace: true });
+      setTimeout(() => {
+        navigate("/informacion", { replace: true });
+      }, 900);
     } catch (err) {
       console.error("Error cerrando sesión:", err.message);
     }
   };
 
+  const [mostrarNoti, setMostrarNoti] = useState(false);
+  const [notiMensaje, setNotiMensaje] = useState("");
+  const [notiTipo, setNotiTipo] = useState("exito");
+
   const esLogin = location.pathname === "/login";
 
   return (
+    <>
     <Navbar
   expand="md"
   fixed="top"
@@ -196,6 +208,13 @@ const Encabezado = () => {
 
       </Container>
     </Navbar>
+    <NotificacionOperacion
+      mostrar={mostrarNoti}
+      mensaje={notiMensaje}
+      tipo={notiTipo}
+      onCerrar={() => setMostrarNoti(false)}
+    />
+    </>
   );
 };
 

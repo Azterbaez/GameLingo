@@ -25,6 +25,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
 import logo from "../assets/image/logo.png";
+import NotificacionOperacion from "../components/NotificacionOperacione";
 
 
 
@@ -39,6 +40,9 @@ const Login = () => {
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [mostrarNoti, setMostrarNoti] = useState(false);
+  const [notiMensaje, setNotiMensaje] = useState("");
+  const [notiTipo, setNotiTipo] = useState("exito");
 
   const [mostrarPassword, setMostrarPassword] = useState(false);
 
@@ -56,7 +60,12 @@ const Login = () => {
       return;
     }
 
-    navigate("/inicio");
+    // mostrar notificación y navegar
+    setLoading(false);
+    setNotiMensaje("Has iniciado sesión correctamente.");
+    setNotiTipo("exito");
+    setMostrarNoti(true);
+    setTimeout(() => navigate("/inicio"), 900);
   };
 
   return (
@@ -85,14 +94,12 @@ const Login = () => {
             
 
               <h1>
-                Aprende Inglés
-                <br />
-                Jugando
+                Accede a tu cuenta
               </h1>
 
               <p className="mt-4 fs-5">
-                GameLingo convierte el aprendizaje del inglés en una experiencia
-                divertida mediante juegos, niveles, retos y recompensas.
+                Continúa tu aprendizaje con ejercicios personalizados, retos motivadores
+                y seguimiento de avances en una experiencia moderna y eficiente.
               </p>
 
               <Row className="mt-5 g-3">
@@ -143,7 +150,7 @@ const Login = () => {
 
                   <h2 className="fw-bold text-azul-oscuro">GameLingo</h2>
 
-                  <p className="text-muted">Aprende inglés jugando</p>
+                  <p className="text-muted">Inicia sesión para continuar con tu progreso.</p>
                 </div>
 
                 {error && <Alert variant="danger">{error}</Alert>}
@@ -164,7 +171,7 @@ const Login = () => {
                         placeholder="correo@gmail.com"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        className="custom-input"
+                        className="custom-input ui-input"
                       />
                     </InputGroup>
                   </Form.Group>
@@ -184,7 +191,7 @@ const Login = () => {
                         placeholder="********"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
-                        className="custom-input"
+                        className="custom-input ui-input"
                       />
 
                       <Button
@@ -217,7 +224,7 @@ disabled:opacity-70
                   <Button
                     type="submit"
                     disabled={loading}
-                    className="login-btn w-100 py-3"
+                    className="login-btn ui-btn-primary w-100 py-3"
                   >
                     {loading ? (
                       <>
@@ -235,13 +242,13 @@ disabled:opacity-70
                 </Form>
 
                 <div className="text-center mt-4">
-                  <p className="mb-1">¿No tienes cuenta?</p>
+                  <p className="mb-1">¿Aún no eres miembro?</p>
 
                   <Link
                     to="/register"
                     className="text-decoration-none fw-bold text-naranja"
                   >
-                    Crear cuenta
+                    Crear cuenta ahora
                   </Link>
                 </div>
               </Card.Body>
@@ -249,6 +256,12 @@ disabled:opacity-70
           </Col>
         </Row>
       </Container>
+        <NotificacionOperacion
+          mostrar={mostrarNoti}
+          mensaje={notiMensaje}
+          tipo={notiTipo}
+          onCerrar={() => setMostrarNoti(false)}
+        />
     </div>
   );
 };

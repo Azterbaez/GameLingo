@@ -15,7 +15,8 @@ const Inicio = () => {
           </h1>
 
           <p className="mt-3" style={{ color: "#6B7280" }}>
-            Aprende inglés de forma interactiva mediante juegos, retos y actividades dinámicas.
+            Continúa tu trayecto de aprendizaje con ejercicios interactivos y retos diseñados
+            para acelerar tu progreso en inglés.
           </p>
 
           <Button
@@ -23,7 +24,7 @@ const Inicio = () => {
             className="mt-4"
             onClick={() => navigate(LEARN_ROUTES.niveles)}
           >
-            Ir a aprender
+            Explorar niveles
           </Button>
         </div>
       </Container>
