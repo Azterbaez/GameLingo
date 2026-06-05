@@ -1,4 +1,6 @@
-import { useCallback, useState } from "react";
+import { useCallback, useState, useEffect } from "react";
+import { useAuth } from "../context/AuthContext";
+import * as progressService from "../services/progressService";
 
 const STORAGE_KEY = "gamelingo-progreso";
 
@@ -16,11 +18,46 @@ function claveEjercicio(levelId, topicId, exerciseId) {
 }
 
 export function useProgresoAprendizaje() {
+  const { user } = useAuth();
   const [progreso, setProgreso] = useState(leerProgreso);
+
+  // Si el usuario está autenticado, sincronizar desde el servidor
+  useEffect(() => {
+    let mounted = true;
+
+    async function sync() {
+      const local = leerProgreso();
+      if (!user) {
+        // sin usuario, mantener local
+        setProgreso(local);
+        return;
+      }
+
+      const server = await progressService.getProgress(user.id);
+
+      // combinar: servidor tiene prioridad, pero unir claves
+      const combinado = { ...local, ...server };
+
+      if (mounted) {
+        setProgreso(combinado);
+        try {
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(combinado));
+        } catch {}
+      }
+    }
+
+    sync();
+
+    return () => {
+      mounted = false;
+    };
+  }, [user]);
 
   const guardar = useCallback((nuevo) => {
     setProgreso(nuevo);
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(nuevo));
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(nuevo));
+    } catch {}
   }, []);
 
   const estaCompletado = useCallback(
@@ -30,12 +67,22 @@ export function useProgresoAprendizaje() {
   );
 
   const marcarCompletado = useCallback(
-    (levelId, topicId, exerciseId) => {
+    async (levelId, topicId, exerciseId) => {
       const key = claveEjercicio(levelId, topicId, exerciseId);
       if (progreso[key]) return;
-      guardar({ ...progreso, [key]: true });
+      const nuevo = { ...progreso, [key]: true };
+      guardar(nuevo);
+
+      // si hay usuario, persistir en servidor (no bloquear UI)
+      try {
+        if (user) {
+          await progressService.saveProgress(user.id, nuevo);
+        }
+      } catch (e) {
+        console.error("Error guardando progreso en servidor:", e);
+      }
     },
-    [progreso, guardar]
+    [progreso, guardar, user]
   );
 
   const progresoTema = useCallback(
