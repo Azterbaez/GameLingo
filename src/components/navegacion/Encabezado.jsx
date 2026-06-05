@@ -8,8 +8,10 @@ import avatargiraffe from "../../assets/image/Avatargiraffe.png";
 import { usePerfil } from "../../context/PerfilContext";
 import { supabase } from "../../assets/database/supabaseconfig";
 import NotificacionOperacion from "../NotificacionOperacione";
+import NombreMovil from "./NombreMovil";
+import BarraNavegacionMovil from "./BarraNavegacionMovil";
 
-const Encabezado = () => {
+const Encabezado = ({ modoAprendizaje = false }) => {
   const [mostrarMenu, setMostrarMenu] = useState(false);
 
   const navigate = useNavigate();
@@ -57,76 +59,65 @@ const Encabezado = () => {
   return (
     <>
     <Navbar
-  expand="md"
-  fixed="top"
-  className="shadow-lg"
-  style={{
-    minHeight: "75px",
-    background:
-      "linear-gradient(9deg, #1e40af, rgb(245, 194, 98), #1e40af)",
-  }}
->
+      expand="md"
+      fixed="top"
+      className={`shadow-sm encabezado-principal ${modoAprendizaje ? "navbar--aprendizaje" : ""}`}
+    >
       <Container>
 
-        {/* LOGO + TITULO + PERFIL MINI RPG */}
-        <Navbar.Brand
-          onClick={() => manejarNavegacion("/inicio")}
-          className="fw-bold d-flex align-items-center"
-          style={{ cursor: "pointer" }}
-        >
-          <img
-            src={logo}
-            width="80"
-            height="80"
-            className="me-2"
-              style={{
-    borderRadius: "70%",
-    border: "7px solid rgba(8, 22, 209, 1)",
-   
-  }}
-          />
-
-          <div className="me-3">
-            <h4 className="mb-0" style={{ color: "#F59E0B" }}>
-              GameLingo
-            </h4>
-            <small style={{ color: "#cbd5e1" }}>
-              Learn English Playing
-            </small>
-          </div>
-
-          {/* 🎮 PERFIL MINI */}
-          <div className="perfil-mini d-flex align-items-center gap-2">
-
-            <img
-              src={perfil?.avatar || avatargiraffe}
-              className="avatar-header"
-              alt="avatar"
-                style={{
-                  width: "70px",
-    height: "70px",
-    borderRadius: "50%",
-    border: "4px solid #ffc400ff",
-   
-  }}
-            />
-
-            <div className="user-info">
-              <div style={{ color: "#fff", fontWeight: "600" }}>
+        {modoAprendizaje ? (
+          <>
+            <Navbar.Brand
+              onClick={() => manejarNavegacion("/inicio")}
+              className="navbar-brand-compact fw-bold d-flex align-items-center"
+            >
+              <img src={logo} alt="GameLingo" className="navbar-brand-compact__logo" />
+              <span className="navbar-brand-compact__title">GameLingo</span>
+            </Navbar.Brand>
+            <NombreMovil className="ms-auto me-1 navbar-aprendizaje-perfil--inline" />
+            <div className="navbar-aprendizaje-perfil d-none d-md-flex align-items-center gap-2 ms-auto me-2">
+              <img
+                src={perfil?.avatar || avatargiraffe}
+                alt=""
+                className="navbar-aprendizaje-perfil__avatar"
+              />
+              <span className="navbar-aprendizaje-perfil__name">
                 {perfil?.username || "Jugador"}
-              </div>
-
-              <small style={{ color: "#e5e7eb" }}>
-                Nivel {perfil?.level ?? 1}
-              </small>
+              </span>
             </div>
-
-          </div>
-        </Navbar.Brand>
+          </>
+        ) : (
+          <Navbar.Brand
+            onClick={() => manejarNavegacion("/inicio")}
+            className="fw-bold d-flex align-items-center navbar-brand-full"
+          >
+            <img src={logo} width="56" height="56" className="me-2 navbar-brand-full__logo" alt="" />
+            <div className="me-2">
+              <h4 className="mb-0 text-naranja">GameLingo</h4>
+              <small className="text-white-50">Learn English Playing</small>
+            </div>
+            <div className="perfil-mini d-flex align-items-center gap-2">
+              <img
+                src={perfil?.avatar || avatargiraffe}
+                className="avatar-header"
+                alt="avatar"
+                width="44"
+                height="44"
+              />
+              <div className="user-info d-none d-md-block">
+                <div className="username">{perfil?.username || "Jugador"}</div>
+                <small className="level">Nivel {perfil?.level ?? 1}</small>
+              </div>
+            </div>
+          </Navbar.Brand>
+        )}
 
         {/* TOGGLE */}
         {!esLogin && (
-          <Navbar.Toggle onClick={manejarToggle} />
+          <Navbar.Toggle
+            onClick={manejarToggle}
+            className={modoAprendizaje ? "navbar-toggler--compact" : ""}
+          />
         )}
 
         {/* OFFCANVAS MENU */}
@@ -147,6 +138,10 @@ const Encabezado = () => {
                 Inicio
               </Nav.Link>
 
+              <Nav.Link onClick={() => manejarNavegacion("/aprender/niveles")}>
+                Aprender
+              </Nav.Link>
+
               <Nav.Link onClick={() => manejarNavegacion("/perfil")}>
                 Perfil
               </Nav.Link>
@@ -163,20 +158,12 @@ const Encabezado = () => {
     Ruta de aprendizaje
   </h6>
 
-  <Nav.Link onClick={() => manejarNavegacion("/learn")}>
-    📚 Niveles
+  <Nav.Link onClick={() => manejarNavegacion("/aprender/niveles")}>
+    Niveles
   </Nav.Link>
 
-  <Nav.Link onClick={() => manejarNavegacion(`/learn/${levelId}/temas`)}>
-    📖 Temas
-  </Nav.Link>
-
-  <Nav.Link
-    onClick={() =>
-      manejarNavegacion(`/learn/${levelId}/${topicId}/actividades`)
-    }
-  >
-    🎮 Actividades
+  <Nav.Link onClick={() => manejarNavegacion("/aprender")}>
+    Aprender inglés
   </Nav.Link>
 
 </div>
@@ -208,6 +195,8 @@ const Encabezado = () => {
 
       </Container>
     </Navbar>
+    {!esLogin && <BarraNavegacionMovil />}
+
     <NotificacionOperacion
       mostrar={mostrarNoti}
       mensaje={notiMensaje}

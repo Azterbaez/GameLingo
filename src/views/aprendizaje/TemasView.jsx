@@ -1,42 +1,56 @@
 import { useNavigate, useParams } from "react-router-dom";
-import { Container, Button } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import { useLearning } from "../../context/LearningContext";
 import { LEARN_ROUTES } from "../../utils/constants";
-
-const TEMAS_DEMO = {
-  a1: [
-    { id: "saludos", nombre: "Saludos" },
-    { id: "numeros", nombre: "Números" },
-  ],
-  a2: [{ id: "familia", nombre: "La familia" }],
-};
+import { obtenerNivel, obtenerTemas } from "../../data/cursosIngles";
+import TarjetaAprendizaje from "../../components/aprendizaje/TarjetaAprendizaje";
+import EncabezadoSeccion from "../../components/aprendizaje/EncabezadoSeccion";
+import PaginaMeta from "../../components/meta/PaginaMeta";
+import { useProgresoAprendizaje } from "../../hooks/useProgresoAprendizaje";
 
 const TemasView = () => {
   const { levelId } = useParams();
   const navigate = useNavigate();
   const { setTemaSeleccionado } = useLearning();
+  const { progresoTema } = useProgresoAprendizaje();
 
-  const temas = TEMAS_DEMO[levelId] ?? [];
+  const nivel = obtenerNivel(levelId);
+  const temas = obtenerTemas(levelId);
 
   const elegirTema = (tema) => {
-    setTemaSeleccionado(tema);
+    setTemaSeleccionado({ id: tema.id, nombre: tema.nombre });
     navigate(LEARN_ROUTES.actividades(levelId, tema.id));
   };
 
   return (
-    <Container className="py-4">
-      <h2 className="text-white fw-bold mb-3">Temas disponibles · Nivel {levelId?.toUpperCase()}</h2>
-      <p className="text-white-50 mb-4">
-        Selecciona un tema para ver las actividades relacionadas y empezar a practicar de inmediato.
-      </p>
+    <Container className="aprender-contenedor py-2">
+      <PaginaMeta titulo="Temas" />
+      <EncabezadoSeccion
+        volver="Cambiar nivel"
+        onVolver={() => navigate(LEARN_ROUTES.niveles)}
+        titulo={nivel?.nombre ?? `Nivel ${levelId?.toUpperCase()}`}
+        descripcion="Cada tema incluye lección, vocabulario y una ruta de ejercicios de distinta dificultad."
+      >
+        <span className="learn-stats-pill">
+          <i className="bi bi-collection" />
+          {temas.length} temas
+        </span>
+      </EncabezadoSeccion>
+
       {temas.length === 0 ? (
-        <p className="text-white-50">Por el momento no hay temas disponibles para este nivel.</p>
+        <p className="text-secondary">Pronto habrá más temas en este nivel.</p>
       ) : (
-        <div className="d-flex flex-wrap gap-2">
+        <div className="learn-card-grid learn-card-grid--3">
           {temas.map((tema) => (
-            <Button key={tema.id} variant="light" onClick={() => elegirTema(tema)}>
-              {tema.nombre}
-            </Button>
+            <TarjetaAprendizaje
+              key={tema.id}
+              titulo={tema.nombre}
+              descripcion={tema.descripcion}
+              icono={tema.icono}
+              progreso={progresoTema(levelId, tema.id, tema.ejercicios.length)}
+              badge={`${tema.ejercicios.length} ejercicios`}
+              onClick={() => elegirTema(tema)}
+            />
           ))}
         </div>
       )}

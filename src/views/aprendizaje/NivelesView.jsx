@@ -1,42 +1,47 @@
 import { useNavigate } from "react-router-dom";
-import { Container, Button } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import { useLearning } from "../../context/LearningContext";
 import { LEARN_ROUTES } from "../../utils/constants";
-
-const NIVELES_DEMO = [
-  { id: "a1", nombre: "A1 — Principiante" },
-  { id: "a2", nombre: "A2 — Elemental" },
-];
+import { NIVELES } from "../../data/cursosIngles";
+import TarjetaAprendizaje from "../../components/aprendizaje/TarjetaAprendizaje";
+import EncabezadoSeccion from "../../components/aprendizaje/EncabezadoSeccion";
+import PaginaMeta from "../../components/meta/PaginaMeta";
 
 const NivelesView = () => {
   const navigate = useNavigate();
-  const { setNivelSeleccionado, limpiarAprendizaje } = useLearning();
+  const { setNivelSeleccionado } = useLearning();
 
   const elegirNivel = (nivel) => {
-    setNivelSeleccionado(nivel);
+    setNivelSeleccionado({ id: nivel.id, nombre: nivel.nombre });
     navigate(LEARN_ROUTES.temas(nivel.id));
   };
 
   return (
-    <Container className="py-4">
-      <h2 className="text-white fw-bold mb-3">Selecciona tu nivel de estudio</h2>
-      <p className="text-white-50 mb-4">
-        Elige el nivel que mejor se ajusta a tu habilidad actual y comienza a practicar con actividades diseñadas para ti.
-      </p>
-      <div className="d-flex flex-wrap gap-2">
-        {NIVELES_DEMO.map((nivel) => (
-          <Button key={nivel.id} variant="warning" onClick={() => elegirNivel(nivel)}>
-            {nivel.nombre}
-          </Button>
+    <Container className="aprender-contenedor py-2">
+      <PaginaMeta titulo="Niveles" descripcion="Elige tu nivel de inglés en GameLingo." />
+      <EncabezadoSeccion
+        titulo="Cursos de inglés"
+        descripcion="Elige tu nivel y avanza con ejercicios de vocabulario, frases y retos."
+      >
+        <span className="learn-stats-pill">
+          <i className="bi bi-mortarboard" />
+          {NIVELES.length} niveles
+        </span>
+      </EncabezadoSeccion>
+
+      <div className="learn-card-grid learn-card-grid--2">
+        {NIVELES.map((nivel) => (
+          <TarjetaAprendizaje
+            key={nivel.id}
+            titulo={nivel.nombre}
+            descripcion={nivel.descripcion}
+            icono={nivel.icono}
+            color={nivel.color}
+            badge="Vocabulario + retos"
+            onClick={() => elegirNivel(nivel)}
+          />
         ))}
       </div>
-      <Button
-        variant="link"
-        className="text-white mt-3 p-0"
-        onClick={limpiarAprendizaje}
-      >
-        Reiniciar selección
-      </Button>
     </Container>
   );
 };

@@ -1,5 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { HelmetProvider } from "react-helmet-async";
 import { AuthProvider } from "./context/AuthContext";
+import PaginaMeta from "./components/meta/PaginaMeta";
 
 import Login from "./views/Login";
 import Register from "./views/Register";
@@ -16,6 +18,7 @@ import AprenderView from "./views/AprenderView";
 import NivelesView from "./views/aprendizaje/NivelesView";
 import TemasView from "./views/aprendizaje/TemasView";
 import TemaDetalleView from "./views/aprendizaje/TemaDetalleView";
+import EjercicioView from "./views/aprendizaje/EjercicioView";
 
 
 
@@ -27,7 +30,17 @@ function Layout() {
       <Route path="/register" element={<Register />} />
       <Route path="/informacion" element={<Informacion />} />
 
-      <Route path="/perfil" element={<Perfil />} />
+      <Route
+        path="/perfil"
+        element={
+          <RutaProtegida>
+            <>
+              <Encabezado />
+              <Perfil />
+            </>
+          </RutaProtegida>
+        }
+      />
 
       <Route
         path="/inicio"
@@ -60,6 +73,10 @@ function Layout() {
             path="niveles/:levelId/temas/:topicId/actividades"
             element={<TemaDetalleView />}
           />
+          <Route
+            path="niveles/:levelId/temas/:topicId/jugar/:exerciseId"
+            element={<EjercicioView />}
+          />
         </Route>
       </Route>
     </Routes>
@@ -68,15 +85,17 @@ function Layout() {
 
 function App() {
   return (
-    <AuthProvider>
-      <UserProvider>
-        <PerfilProvider>
-          <Router>
-            <Layout />
-          </Router>
-        </PerfilProvider>
-      </UserProvider>
-    </AuthProvider>
+    <HelmetProvider>
+      <AuthProvider>
+        <UserProvider>
+          <PerfilProvider>
+            <Router>
+              <Layout />
+            </Router>
+          </PerfilProvider>
+        </UserProvider>
+      </AuthProvider>
+    </HelmetProvider>
   );
 }
 

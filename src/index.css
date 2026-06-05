@@ -24,6 +24,11 @@ body,
   );
 }
 
+.inicio-page,
+.perfil-page.pagina-con-nav-movil {
+  padding-top: 4.5rem;
+}
+
 .login-card{
   background:#4573b1 !important;
   border-radius:30px !important;

@@ -134,11 +134,8 @@ const SubheaderNiveles = () => {
   };
 
   return (
-    <nav
-      className="subheader-niveles d-none d-md-block"
-      aria-label="Progreso de aprendizaje"
-    >
-      <Container>
+    <nav className="subheader-niveles" aria-label="Progreso de aprendizaje">
+      <Container fluid="md" className="subheader-niveles__container">
         <ol className="subheader-niveles__lista">
           {pasos.map((paso) => (
             <li
@@ -174,11 +171,11 @@ const SubheaderNiveles = () => {
                 onClick={() => irAPaso(paso)}
               >
                 <span className="subheader-niveles__etiqueta">
+                  <span className="subheader-niveles__num">{paso.indice + 1}</span>
                   {paso.etiqueta}
                 </span>
-
                 {paso.subtitulo && (
-                  <span className="subheader-niveles__detalle">
+                  <span className="subheader-niveles__detalle" title={paso.subtitulo}>
                     {paso.subtitulo}
                   </span>
                 )}

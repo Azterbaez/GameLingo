@@ -1,0 +1,19 @@
+{
+  "name": "GameLingo",
+  "short_name": "GameLingo",
+  "description": "Aprende inglés jugando con cursos y ejercicios interactivos.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#1e3a8a",
+  "orientation": "portrait-primary",
+  "lang": "es",
+  "icons": [
+    {
+      "src": "/icons.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

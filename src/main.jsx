@@ -6,6 +6,7 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 import App from './App.jsx'
 import './index.css'
 import './App.css'
+import './styles/aprendizaje.css'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>

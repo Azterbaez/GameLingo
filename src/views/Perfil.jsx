@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Container, Card, Form, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import NotificacionOperacion from "../components/NotificacionOperacione";
+import PaginaMeta from "../components/meta/PaginaMeta";
 
 import avatargiraffe from "../assets/image/Avatargiraffe.png";
 import avatarkoala from "../assets/image/Avatarkoala.png";
@@ -85,7 +86,8 @@ const Perfil = () => {
   }
 
   return (
-  <div className="perfil-page">
+  <div className="perfil-page pagina-con-nav-movil">
+    <PaginaMeta titulo="Mi perfil" />
     <Container className="d-flex justify-content-center align-items-center min-vh-100 py-5">
       <Card
         className="shadow-lg border-0"
