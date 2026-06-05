@@ -25,6 +25,7 @@ export async function saveProgress(userId, progreso) {
 	const payload = {
 		user_id: userId,
 		data: progreso,
+		updated_at: new Date().toISOString(),
 	};
 
 	const { error } = await supabase.from(TABLE).upsert(payload, {
