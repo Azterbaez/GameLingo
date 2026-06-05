@@ -64,12 +64,12 @@ const Encabezado = () => {
         >
           <img
             src={logo}
-            width="60"
-            height="60"
+            width="80"
+            height="80"
             className="me-2"
               style={{
-    borderRadius: "50%",
-    border: "4px solid #e4b313",
+    borderRadius: "70%",
+    border: "7px solid rgba(8, 22, 209, 1)",
    
   }}
           />
@@ -94,7 +94,7 @@ const Encabezado = () => {
                   width: "70px",
     height: "70px",
     borderRadius: "50%",
-    border: "4px solid #e4b313",
+    border: "4px solid #ffc400ff",
    
   }}
             />
