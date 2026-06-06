@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Alert, Form } from "react-bootstrap";
 import { normalizarTexto } from "../../../utils/ejercicioUtils";
 import AccionesEjercicio from "./AccionesEjercicio";
+import { notificarResultado } from "../../../utils/sonidos";
 
 const EjercicioCompletar = ({ ejercicio, onCorrecto }) => {
   const [respuesta, setRespuesta] = useState("");
@@ -10,12 +11,12 @@ const EjercicioCompletar = ({ ejercicio, onCorrecto }) => {
   const esCorrecto =
     enviado && normalizarTexto(respuesta) === normalizarTexto(ejercicio.respuesta);
 
-  const verificar = (e) => {
+  const verificar = async (e) => {
     e?.preventDefault();
     if (!respuesta.trim()) return;
     const ok = normalizarTexto(respuesta) === normalizarTexto(ejercicio.respuesta);
     setEnviado(true);
-    if (ok) onCorrecto?.();
+    await notificarResultado(ok, onCorrecto);
   };
 
   const partes = ejercicio.frase.split("___");

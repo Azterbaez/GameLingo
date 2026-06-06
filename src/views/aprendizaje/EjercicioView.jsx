@@ -6,6 +6,8 @@ import { useProgresoAprendizaje } from "../../hooks/useProgresoAprendizaje";
 import { BadgeDificultad, BadgeTipo } from "../../components/aprendizaje/BadgeMeta";
 import EncabezadoSeccion from "../../components/aprendizaje/EncabezadoSeccion";
 import PaginaMeta from "../../components/meta/PaginaMeta";
+import ToggleSonidos from "../../components/aprendizaje/ToggleSonidos";
+import IndicadorSincronizacion from "../../components/aprendizaje/IndicadorSincronizacion";
 import EjercicioOpcionMultiple from "../../components/aprendizaje/ejercicios/EjercicioOpcionMultiple";
 import EjercicioEmparejar from "../../components/aprendizaje/ejercicios/EjercicioEmparejar";
 import EjercicioCompletar from "../../components/aprendizaje/ejercicios/EjercicioCompletar";
@@ -73,6 +75,8 @@ const EjercicioView = () => {
             Hecho
           </span>
         )}
+        <IndicadorSincronizacion />
+        <ToggleSonidos />
       </EncabezadoSeccion>
 
       <div className="learn-exercise-shell">

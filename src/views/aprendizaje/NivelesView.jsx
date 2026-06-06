@@ -6,6 +6,7 @@ import { NIVELES } from "../../data/cursosIngles";
 import TarjetaAprendizaje from "../../components/aprendizaje/TarjetaAprendizaje";
 import EncabezadoSeccion from "../../components/aprendizaje/EncabezadoSeccion";
 import PaginaMeta from "../../components/meta/PaginaMeta";
+import IndicadorSincronizacion from "../../components/aprendizaje/IndicadorSincronizacion";
 
 const NivelesView = () => {
   const navigate = useNavigate();
@@ -27,6 +28,7 @@ const NivelesView = () => {
           <i className="bi bi-mortarboard" />
           {NIVELES.length} niveles
         </span>
+        <IndicadorSincronizacion />
       </EncabezadoSeccion>
 
       <div className="learn-card-grid learn-card-grid--2">

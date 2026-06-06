@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Alert } from "react-bootstrap";
 import AccionesEjercicio from "./AccionesEjercicio";
+import { notificarResultado } from "../../../utils/sonidos";
 
 const EjercicioOpcionMultiple = ({ ejercicio, onCorrecto }) => {
   const [seleccion, setSeleccion] = useState(null);
@@ -8,10 +9,11 @@ const EjercicioOpcionMultiple = ({ ejercicio, onCorrecto }) => {
 
   const esCorrecto = seleccion === ejercicio.respuestaCorrecta;
 
-  const verificar = () => {
+  const verificar = async () => {
     if (seleccion === null) return;
+    const ok = seleccion === ejercicio.respuestaCorrecta;
     setEnviado(true);
-    if (esCorrecto) onCorrecto?.();
+    await notificarResultado(ok, onCorrecto);
   };
 
   return (

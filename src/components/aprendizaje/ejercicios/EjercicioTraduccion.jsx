@@ -2,18 +2,19 @@ import { useState } from "react";
 import { Alert, Form } from "react-bootstrap";
 import { respuestaTraduccionValida } from "../../../utils/ejercicioUtils";
 import AccionesEjercicio from "./AccionesEjercicio";
+import { notificarResultado } from "../../../utils/sonidos";
 
 const EjercicioTraduccion = ({ ejercicio, onCorrecto }) => {
   const [respuesta, setRespuesta] = useState("");
   const [enviado, setEnviado] = useState(false);
   const esCorrecto = enviado && respuestaTraduccionValida(respuesta, ejercicio);
 
-  const verificar = (e) => {
+  const verificar = async (e) => {
     e?.preventDefault();
     if (!respuesta.trim()) return;
     const ok = respuestaTraduccionValida(respuesta, ejercicio);
     setEnviado(true);
-    if (ok) onCorrecto?.();
+    await notificarResultado(ok, onCorrecto);
   };
 
   return (

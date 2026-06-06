@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Alert } from "react-bootstrap";
 import { fraseOrdenadaValida, mezclarArray } from "../../../utils/ejercicioUtils";
 import AccionesEjercicio from "./AccionesEjercicio";
+import { notificarResultado } from "../../../utils/sonidos";
 
 const EjercicioOrdenar = ({ ejercicio, onCorrecto }) => {
   const crearBanco = () =>
@@ -39,12 +40,12 @@ const EjercicioOrdenar = ({ ejercicio, onCorrecto }) => {
     setEsCorrecto(false);
   };
 
-  const verificar = () => {
+  const verificar = async () => {
     if (seleccionadas.length !== ejercicio.palabras.length) return;
     const ok = fraseOrdenadaValida(construida, ejercicio);
     setEnviado(true);
     setEsCorrecto(ok);
-    if (ok) onCorrecto?.();
+    await notificarResultado(ok, onCorrecto);
   };
 
   return (

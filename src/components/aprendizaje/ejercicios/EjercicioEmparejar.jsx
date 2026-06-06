@@ -1,5 +1,10 @@
 import { useMemo, useState } from "react";
 import { Button, Alert, Row, Col } from "react-bootstrap";
+import {
+  notificarFallo,
+  notificarParCorrecto,
+  notificarResultado,
+} from "../../../utils/sonidos";
 
 function mezclar(lista) {
   const copia = [...lista];
@@ -33,7 +38,7 @@ const EjercicioEmparejar = ({ ejercicio, onCorrecto }) => {
     setIncorrecto(false);
   };
 
-  const elegirDer = (item) => {
+  const elegirDer = async (item) => {
     if (completado || !seleccionIzq || emparejados[item.id]) return;
 
     if (seleccionIzq.par === item.par) {
@@ -44,13 +49,17 @@ const EjercicioEmparejar = ({ ejercicio, onCorrecto }) => {
       };
       setEmparejados(nuevo);
       setSeleccionIzq(null);
-      if (Object.keys(nuevo).length === total * 2) {
+      const terminado = Object.keys(nuevo).length === total * 2;
+      if (terminado) {
         setCompletado(true);
-        onCorrecto?.();
+        await notificarResultado(true, onCorrecto);
+      } else {
+        await notificarParCorrecto();
       }
     } else {
       setIncorrecto(true);
       setSeleccionIzq(null);
+      await notificarFallo();
     }
   };
 

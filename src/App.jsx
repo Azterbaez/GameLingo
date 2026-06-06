@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import { AuthProvider } from "./context/AuthContext";
+import { ProgresoProvider } from "./context/ProgresoContext";
 import PaginaMeta from "./components/meta/PaginaMeta";
 
 import Login from "./views/Login";
@@ -87,13 +88,15 @@ function App() {
   return (
     <HelmetProvider>
       <AuthProvider>
-        <UserProvider>
-          <PerfilProvider>
-            <Router>
-              <Layout />
-            </Router>
-          </PerfilProvider>
-        </UserProvider>
+        <ProgresoProvider>
+          <UserProvider>
+            <PerfilProvider>
+              <Router>
+                <Layout />
+              </Router>
+            </PerfilProvider>
+          </UserProvider>
+        </ProgresoProvider>
       </AuthProvider>
     </HelmetProvider>
   );
