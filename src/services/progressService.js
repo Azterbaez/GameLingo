@@ -9,7 +9,7 @@ export async function getProgress(userId) {
 		.from(TABLE)
 		.select("data")
 		.eq("user_id", userId)
-		.single();
+		.maybeSingle();
 
 	if (error && error.code !== "PGRST116") {
 		console.error("Error fetching progress:", error);

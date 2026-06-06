@@ -1,6 +1,5 @@
-<<<<<<< HEAD
-export { useProgresoAprendizaje } from "../context/ProgresoContext";
-=======
+  
+
 import { useCallback, useState, useEffect } from "react";
 import { useAuth } from "../context/AuthContext";
 import * as progressService from "../services/progressService";
@@ -113,4 +112,4 @@ export function useProgresoAprendizaje() {
     ejerciciosCompletadosEnTema,
   };
 }
->>>>>>> 54d16ba087b1deed5e35ea8528cf8c9432d5ec14
+
