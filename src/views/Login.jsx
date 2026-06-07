@@ -27,6 +27,7 @@ import { useAuth } from "../context/AuthContext";
 import logo from "../assets/image/logo.png";
 import NotificacionOperacion from "../components/NotificacionOperacione";
 import TermsModal from "../components/TermsModal";
+import ForgotPasswordModal from "../components/ForgotPasswordModal";
 
 
 
@@ -45,6 +46,7 @@ const Login = () => {
   const [notiMensaje, setNotiMensaje] = useState("");
   const [notiTipo, setNotiTipo] = useState("exito");
   const [showTermsModal, setShowTermsModal] = useState(false);
+  const [showForgotPasswordModal, setShowForgotPasswordModal] = useState(false);
 
   const [mostrarPassword, setMostrarPassword] = useState(false);
 
@@ -230,6 +232,17 @@ disabled:opacity-70
                     </InputGroup>
                   </Form.Group>
 
+                  {/* OLVIDÉ MI CONTRASEÑA */}
+                  <div className="mb-4 text-end">
+                    <span
+                      className="text-primary"
+                      style={{ cursor: "pointer", fontSize: "0.9rem" }}
+                      onClick={() => setShowForgotPasswordModal(true)}
+                    >
+                      ¿Olvidé mi contraseña?
+                    </span>
+                  </div>
+
                   {/* BOTÓN */}
 
                   <Button
@@ -274,6 +287,7 @@ disabled:opacity-70
           onCerrar={() => setMostrarNoti(false)}
         />
         <TermsModal show={showTermsModal} onHide={() => setShowTermsModal(false)} />
+        <ForgotPasswordModal show={showForgotPasswordModal} onHide={() => setShowForgotPasswordModal(false)} />
     </div>
   );
 };

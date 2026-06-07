@@ -160,6 +160,54 @@ export const AuthProvider = ({ children }) => {
   };
 
   // =========================
+  // RESET PASSWORD - SEND EMAIL
+  // =========================
+
+  const resetPasswordForEmail = async (email) => {
+    try {
+      const { error } = await supabase.auth.resetPasswordForEmail(email, {
+        redirectTo: `${window.location.origin}/reset-password`,
+      });
+
+      if (error) throw error;
+
+      return {
+        success: true,
+        message: "Se ha enviado un correo con instrucciones de recuperación",
+      };
+    } catch (error) {
+      return {
+        success: false,
+        message: error.message || "Error al enviar correo de recuperación",
+      };
+    }
+  };
+
+  // =========================
+  // UPDATE PASSWORD
+  // =========================
+
+  const updatePassword = async (newPassword) => {
+    try {
+      const { error } = await supabase.auth.updateUser({
+        password: newPassword,
+      });
+
+      if (error) throw error;
+
+      return {
+        success: true,
+        message: "Contraseña actualizada correctamente",
+      };
+    } catch (error) {
+      return {
+        success: false,
+        message: error.message || "Error al actualizar contraseña",
+      };
+    }
+  };
+
+  // =========================
   // CONTEXT VALUE
   // =========================
 
@@ -169,6 +217,8 @@ export const AuthProvider = ({ children }) => {
     signUp,
     signIn,
     signOut,
+    resetPasswordForEmail,
+    updatePassword,
   };
 
   return (

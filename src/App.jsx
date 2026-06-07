@@ -6,6 +6,7 @@ import PaginaMeta from "./components/meta/PaginaMeta";
 
 import Login from "./views/Login";
 import Register from "./views/Register";
+import ResetPassword from "./views/ResetPassword";
 import Informacion from "./views/Informacion";
 import Inicio from "./views/Inicio";
 import Perfil from "./views/Perfil";
@@ -29,6 +30,7 @@ function Layout() {
       <Route path="/" element={<Informacion />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
+      <Route path="/reset-password" element={<ResetPassword />} />
       <Route path="/informacion" element={<Informacion />} />
 
       <Route
