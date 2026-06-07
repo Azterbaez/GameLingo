@@ -1,5 +1,6 @@
 import { usePerfil } from "../../context/PerfilContext";
 import { useEsMovil } from "../../hooks/useEsMovil";
+import { useNavigate } from "react-router-dom";
 import avatargiraffe from "../../assets/image/Avatargiraffe.png";
 
 /**
@@ -8,6 +9,7 @@ import avatargiraffe from "../../assets/image/Avatargiraffe.png";
 const NombreMovil = ({ className = "" }) => {
   const { perfil } = usePerfil();
   const esMovil = useEsMovil();
+  const navigate = useNavigate();
 
   if (!esMovil) return null;
 
@@ -20,6 +22,7 @@ const NombreMovil = ({ className = "" }) => {
         src={perfil?.avatar || avatargiraffe}
         alt=""
         className="nombre-movil__avatar"
+        onClick={() => navigate("/perfil")}
       />
       <div className="nombre-movil__texto">
         <span className="nombre-movil__nombre">{nombre}</span>

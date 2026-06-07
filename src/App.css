@@ -561,10 +561,10 @@ body {
 }
 
 .avatar-header {
-  width: 12px;
-  height: 12px;
+  width: 44px;
+  height: 44px;
 
-  border-radius: 5%;
+  border-radius: 50%;
   border: 2px solid #2563eb;
 }
 
@@ -622,6 +622,21 @@ img.avatar-option{
   background: linear-gradient(9deg, #1e40af, rgb(245, 194, 98), #1e40af) !important;
 }
 
+.app-footer {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1100;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.85rem;
+  padding: 0.35rem 0.75rem;
+  background: rgba(15, 23, 42, 0.5);
+  border-radius: 999px;
+  pointer-events: none;
+  user-select: none;
+}
+
 .encabezado-principal:not(.navbar--aprendizaje) {
   min-height: 72px;
   padding-top: 0.35rem;
@@ -630,12 +645,52 @@ img.avatar-option{
 
 .navbar-brand-full {
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 1rem;
 }
 
 .navbar-brand-full__logo {
   border-radius: 50%;
   border: 3px solid rgba(8, 22, 209, 0.9);
   object-fit: cover;
+  width: 48px;
+  height: 48px;
+}
+
+.perfil-mini {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.perfil-mini .avatar-header {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid #fbbf24;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.perfil-mini .user-info {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.perfil-mini .username {
+  font-weight: 700;
+  color: #fff;
+  font-size: 0.9rem;
+}
+
+.perfil-mini .level {
+  color: #c7d7ff;
+  font-size: 0.75rem;
 }
 
 .perfil-page{

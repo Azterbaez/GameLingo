@@ -26,6 +26,7 @@ import { useAuth } from "../context/AuthContext";
 
 import logo from "../assets/image/logo.png";
 import NotificacionOperacion from "../components/NotificacionOperacione";
+import TermsModal from "../components/TermsModal";
 
 
 
@@ -43,6 +44,7 @@ const Login = () => {
   const [mostrarNoti, setMostrarNoti] = useState(false);
   const [notiMensaje, setNotiMensaje] = useState("");
   const [notiTipo, setNotiTipo] = useState("exito");
+  const [showTermsModal, setShowTermsModal] = useState(false);
 
   const [mostrarPassword, setMostrarPassword] = useState(false);
 
@@ -151,6 +153,15 @@ const Login = () => {
                   <h2 className="fw-bold text-azul-oscuro">GameLingo</h2>
 
                   <p className="text-muted">Inicia sesión para continuar con tu progreso.</p>
+                  <p className="text-muted small">
+                    <span
+                      className="text-primary"
+                      style={{ cursor: "pointer", textDecoration: "underline" }}
+                      onClick={() => setShowTermsModal(true)}
+                    >
+                      Leer términos y condiciones
+                    </span>
+                  </p>
                 </div>
 
                 {error && <Alert variant="danger">{error}</Alert>}
@@ -262,6 +273,7 @@ disabled:opacity-70
           tipo={notiTipo}
           onCerrar={() => setMostrarNoti(false)}
         />
+        <TermsModal show={showTermsModal} onHide={() => setShowTermsModal(false)} />
     </div>
   );
 };

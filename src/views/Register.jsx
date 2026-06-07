@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import logo from "../assets/image/logo.png";
+import TermsModal from "../components/TermsModal";
 
 import {
   Container,
@@ -27,12 +28,19 @@ const Register = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
+  const [showTermsModal, setShowTermsModal] = useState(false);
+  const [acceptedTerms, setAcceptedTerms] = useState(false);
 
   const handleRegister = async (e) => {
     e.preventDefault();
 
     setError("");
     setSuccess("");
+
+    if (!acceptedTerms) {
+      setError("Debes aceptar los términos y condiciones para registrarte.");
+      return;
+    }
 
     if (password !== confirmPassword) {
       setError("Las contraseñas no coinciden");
@@ -251,9 +259,31 @@ const Register = () => {
                     </InputGroup>
                   </Form.Group>
 
+                  <Form.Group className="mb-4">
+                    <Form.Check
+                      type="checkbox"
+                      id="acceptTerms"
+                      checked={acceptedTerms}
+                      onChange={(e) => setAcceptedTerms(e.target.checked)}
+                      label={
+                        <>
+                          Acepto los {" "}
+                          <span
+                            className="text-primary"
+                            style={{ cursor: "pointer", textDecoration: "underline" }}
+                            onClick={() => setShowTermsModal(true)}
+                          >
+                            términos y condiciones
+                          </span>
+                        </>
+                      }
+                      required
+                    />
+                  </Form.Group>
+
                   <Button
                     type="submit"
-                    disabled={loading}
+                    disabled={loading || !acceptedTerms}
                     className="login-btn ui-btn-primary w-100 py-2 fw-bold rounded-1"
                   >
                     {loading ? (
@@ -273,6 +303,8 @@ const Register = () => {
                     )}
                   </Button>
                 </Form>
+
+                <TermsModal show={showTermsModal} onHide={() => setShowTermsModal(false)} />
 
                 <div className="text-center mt-4">
                   <p className="mb-0">

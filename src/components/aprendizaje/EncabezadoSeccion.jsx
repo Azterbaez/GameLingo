@@ -5,6 +5,8 @@ const EncabezadoSeccion = ({
   descripcion,
   children,
   compacto = true,
+  media = null,
+  inlineChildren = false,
 }) => {
   return (
     <header
@@ -12,18 +14,26 @@ const EncabezadoSeccion = ({
     >
       <div className="learn-section-header__row">
         <div className="learn-section-header__main">
-          {volver && (
-            <button type="button" className="learn-back-btn" onClick={onVolver}>
-              <i className="bi bi-arrow-left" aria-hidden />
-              <span>{volver}</span>
-            </button>
+          <div className="learn-section-header__actions">
+            {volver && (
+              <button type="button" className="learn-back-btn" onClick={onVolver}>
+                <i className="bi bi-arrow-left" aria-hidden />
+                <span>{volver}</span>
+              </button>
+            )}
+            {inlineChildren && children && (
+              <div className="learn-section-header__inline">{children}</div>
+            )}
+          </div>
+          {media && (
+            <div className="learn-section-header__media">{media}</div>
           )}
           <h1 className="learn-section-header__title">{titulo}</h1>
           {descripcion && (
             <p className="learn-section-header__desc">{descripcion}</p>
           )}
         </div>
-        {children && (
+        {children && !inlineChildren && (
           <div className="learn-section-header__aside">{children}</div>
         )}
       </div>

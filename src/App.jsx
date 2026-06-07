@@ -94,6 +94,7 @@ function App() {
               <Router>
                 <Layout />
               </Router>
+              <footer className="app-footer">© 2026 GameLingo</footer>
             </PerfilProvider>
           </UserProvider>
         </ProgresoProvider>

@@ -80,6 +80,7 @@ const Encabezado = ({ modoAprendizaje = false }) => {
                 src={perfil?.avatar || avatargiraffe}
                 alt=""
                 className="navbar-aprendizaje-perfil__avatar"
+                onClick={() => manejarNavegacion("/perfil")}
               />
               <span className="navbar-aprendizaje-perfil__name">
                 {perfil?.username || "Jugador"}
