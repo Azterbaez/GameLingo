@@ -96,7 +96,7 @@ const Register = () => {
           {/* PANEL IZQUIERDO */}
 
           <Col lg={6} className="d-none d-lg-block">
-            <div className="hero-content">
+            <div className="hero-content content-reveal" style={{ "--reveal-delay": "0.2s" }}>
               <div className="hero-badge">
                 <span className="badge-dot"></span>
                 Aprende Jugando
@@ -114,17 +114,17 @@ const Register = () => {
               </p>
 
               <div className="hero-stats">
-                <div className="stat-card">
+                <div className="stat-card content-reveal" style={{ "--reveal-delay": "0.45s" }}>
                   <h2>+100</h2>
                   <p>Lecciones</p>
                 </div>
 
-                <div className="stat-card">
+                <div className="stat-card content-reveal" style={{ "--reveal-delay": "0.55s" }}>
                   <h2>24/7</h2>
                   <p>Disponible</p>
                 </div>
 
-                <div className="stat-card">
+                <div className="stat-card content-reveal" style={{ "--reveal-delay": "0.65s" }}>
                   <h2>🎮</h2>
                   <p>Gamificación</p>
                 </div>
@@ -135,7 +135,7 @@ const Register = () => {
           {/* REGISTER */}
 
           <Col md={10} lg={4}>
-            <Card className="login-card border-0">
+            <Card className="login-card border-0 content-reveal" style={{ "--reveal-delay": "0.35s" }}>
               <Card.Body className="p-3">
                 <div className="text-center mb-4">
                   <div className=" logo-circle mb-2">

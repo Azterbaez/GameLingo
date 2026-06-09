@@ -3,17 +3,15 @@ import { Container } from "react-bootstrap";
 import { useLearning } from "../../context/LearningContext";
 import { LEARN_ROUTES } from "../../utils/constants";
 import { obtenerNivel, obtenerTemas } from "../../data/cursosIngles";
+import { navigateWithLeave } from "../../utils/navigation";
 import TarjetaAprendizaje from "../../components/aprendizaje/TarjetaAprendizaje";
 import EncabezadoSeccion from "../../components/aprendizaje/EncabezadoSeccion";
 import PaginaMeta from "../../components/meta/PaginaMeta";
 import { useProgresoAprendizaje } from "../../hooks/useProgresoAprendizaje";
-import gifwelcome1 from "../../assets/image/gifwelcome1.mp4";
-import gifwelcome2 from "../../assets/image/gifwelcome2.mp4";
-
-
+import VideoBienvenidaNivel from "../../components/aprendizaje/VideoBienvenidaNivel";
 
 const TemasView = () => {
-  const { levelId } = useParams();
+  const { levelId, subnivel = 1 } = useParams();
   const navigate = useNavigate();
   const { setTemaSeleccionado } = useLearning();
   const { progresoTema } = useProgresoAprendizaje();
@@ -21,30 +19,9 @@ const TemasView = () => {
   const nivel = obtenerNivel(levelId);
   const temas = obtenerTemas(levelId);
 
-  const gifMedia =
-    levelId === "a1" ? (
-      <video
-        src={gifwelcome1}
-        className="welcome-gif"
-        autoPlay
-        muted
-        loop
-        playsInline
-      />
-    ) : levelId === "a2" ? (
-      <video
-        src={gifwelcome2}
-        className="welcome-gif"
-        autoPlay
-        muted
-        loop
-        playsInline
-      />
-    ) : null;
-
   const elegirTema = (tema) => {
     setTemaSeleccionado({ id: tema.id, nombre: tema.nombre });
-    navigate(LEARN_ROUTES.actividades(levelId, tema.id));
+    navigateWithLeave(navigate, LEARN_ROUTES.actividades(levelId, tema.id));
   };
 
   return (
@@ -56,7 +33,7 @@ const TemasView = () => {
         onVolver={() => navigate(LEARN_ROUTES.niveles)}
         titulo={nivel?.nombre ?? `Nivel ${levelId?.toUpperCase()}`}
         descripcion="Cada tema incluye lección, vocabulario y una ruta de ejercicios de distinta dificultad."
-        media={gifMedia}
+        media={<VideoBienvenidaNivel subnivel={Number(subnivel)} />}
         inlineChildren
       >
         <span className="learn-stats-pill">
@@ -69,7 +46,7 @@ const TemasView = () => {
         <p className="text-secondary">Pronto habrá más temas en este nivel.</p>
       ) : (
         <div className="learn-card-grid learn-card-grid--3">
-          {temas.map((tema) => (
+          {temas.map((tema, idx) => (
             <TarjetaAprendizaje
               key={tema.id}
               titulo={tema.nombre}
@@ -78,6 +55,7 @@ const TemasView = () => {
               progreso={progresoTema(levelId, tema.id, tema.ejercicios.length)}
               badge={`${tema.ejercicios.length} ejercicios`}
               onClick={() => elegirTema(tema)}
+              style={{ transitionDelay: `${idx * 60}ms` }}
             />
           ))}
         </div>

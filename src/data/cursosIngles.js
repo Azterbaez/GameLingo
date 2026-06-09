@@ -763,4 +763,14 @@ export function obtenerEjercicio(levelId, topicId, exerciseId) {
   return tema.ejercicios.find((e) => e.id === exerciseId) ?? null;
 }
 
+export function obtenerTemasPorSubnivel(levelId, subnivel) {
+  const temas = obtenerTemas(levelId) || [];
+  const s = Number(subnivel) || 1;
+  if (!temas.length) return [];
+
+  const groupSize = Math.ceil(temas.length / 3);
+  const start = (s - 1) * groupSize;
+  return temas.slice(start, start + groupSize);
+}
+
 export { etiquetaTipoEjercicio, iconoTipoEjercicio, infoDificultad } from "../utils/ejercicioUtils";

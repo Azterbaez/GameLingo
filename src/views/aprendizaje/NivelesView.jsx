@@ -7,6 +7,7 @@ import TarjetaAprendizaje from "../../components/aprendizaje/TarjetaAprendizaje"
 import EncabezadoSeccion from "../../components/aprendizaje/EncabezadoSeccion";
 import PaginaMeta from "../../components/meta/PaginaMeta";
 import IndicadorSincronizacion from "../../components/aprendizaje/IndicadorSincronizacion";
+import { navigateWithLeave } from "../../utils/navigation";
 
 const NivelesView = () => {
   const navigate = useNavigate();
@@ -14,7 +15,7 @@ const NivelesView = () => {
 
   const elegirNivel = (nivel) => {
     setNivelSeleccionado({ id: nivel.id, nombre: nivel.nombre });
-    navigate(LEARN_ROUTES.temas(nivel.id));
+    navigateWithLeave(navigate, LEARN_ROUTES.temas(nivel.id));
   };
 
   return (
@@ -32,7 +33,7 @@ const NivelesView = () => {
       </EncabezadoSeccion>
 
       <div className="learn-card-grid learn-card-grid--2">
-        {NIVELES.map((nivel) => (
+        {NIVELES.map((nivel, idx) => (
           <TarjetaAprendizaje
             key={nivel.id}
             titulo={nivel.nombre}
@@ -41,6 +42,7 @@ const NivelesView = () => {
             color={nivel.color}
             badge="Vocabulario + retos"
             onClick={() => elegirNivel(nivel)}
+            style={{ transitionDelay: `${idx * 70}ms` }}
           />
         ))}
       </div>

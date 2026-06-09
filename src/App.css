@@ -398,6 +398,332 @@ body {
   border-radius: 24px;
 }
 
+/* =========================
+   ANIMACIONES ENTRADA / SALIDA
+========================= */
+
+@keyframes pageRevealIn {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 28px, 0) scale(0.965);
+    filter: blur(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes pageRevealForwardIn {
+  0% {
+    opacity: 0;
+    transform: translate3d(56px, 12px, 0) scale(0.94);
+    filter: blur(12px);
+  }
+  55% {
+    opacity: 0.85;
+    filter: blur(3px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes pageRevealBackIn {
+  0% {
+    opacity: 0;
+    transform: translate3d(-56px, 12px, 0) scale(0.94);
+    filter: blur(12px);
+  }
+  55% {
+    opacity: 0.85;
+    filter: blur(3px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes pageRevealInSlow {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 40px, 0) scale(0.92);
+    filter: blur(14px);
+  }
+  50% {
+    opacity: 0.8;
+    filter: blur(4px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes cardRevealUp {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 36px, 0) scale(0.9);
+  }
+  60% {
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes learnContentReveal {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 28px, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.animated-view {
+  --anim-duration: 420ms;
+  --anim-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
+  filter: blur(0);
+  will-change: opacity, transform, filter;
+}
+
+.animated-view.enter {
+  opacity: 0;
+}
+
+.animated-view.entered {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
+  filter: blur(0);
+}
+
+/* Variante premium — estilo landing page */
+.animated-view.page-reveal.enter {
+  animation: pageRevealIn var(--anim-duration) var(--anim-ease) both;
+}
+
+.animated-view.page-reveal.dir-forward.enter {
+  animation-name: pageRevealForwardIn;
+}
+
+.animated-view.page-reveal.dir-back.enter {
+  animation-name: pageRevealBackIn;
+}
+
+.animated-view.page-reveal.entered {
+  animation: none;
+}
+
+/* Variantes clásicas (compatibilidad) */
+.animated-view.fade.enter,
+.animated-view.slide-left.enter,
+.animated-view.slide-right.enter,
+.animated-view.slide-up.enter {
+  transition:
+    opacity var(--anim-duration) var(--anim-ease),
+    transform var(--anim-duration) var(--anim-ease),
+    filter var(--anim-duration) var(--anim-ease);
+}
+
+.animated-view.fade.enter {
+  transform: translate3d(0, 16px, 0) scale(0.98);
+  filter: blur(6px);
+}
+
+.animated-view.slide-left.enter {
+  transform: translate3d(32px, 0, 0) scale(0.98);
+  filter: blur(4px);
+}
+
+.animated-view.slide-right.enter {
+  transform: translate3d(-32px, 0, 0) scale(0.98);
+  filter: blur(4px);
+}
+
+.animated-view.slide-up.enter {
+  transform: translate3d(0, 32px, 0) scale(0.98);
+  filter: blur(6px);
+}
+
+.animated-view.fade.entered,
+.animated-view.slide-left.entered,
+.animated-view.slide-right.entered,
+.animated-view.slide-up.entered {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
+  filter: blur(0);
+}
+
+/* Salida de página */
+.animated-view.leaving {
+  opacity: 0;
+  pointer-events: none;
+  animation: none !important;
+  transition:
+    opacity 320ms cubic-bezier(0.4, 0, 0.8, 1),
+    transform 320ms cubic-bezier(0.4, 0, 0.8, 1),
+    filter 320ms cubic-bezier(0.4, 0, 0.8, 1);
+}
+
+.animated-view.page-reveal.leaving-forward,
+.animated-view.leaving-forward {
+  transform: translate3d(-36px, -6px, 0) scale(0.97);
+  filter: blur(6px);
+}
+
+.animated-view.page-reveal.leaving-back,
+.animated-view.leaving-back {
+  transform: translate3d(36px, -6px, 0) scale(0.97);
+  filter: blur(6px);
+}
+
+.animated-view.leaving-neutral {
+  transform: translate3d(0, -14px, 0) scale(0.98);
+  filter: blur(5px);
+}
+
+.animated-view.slide-left.leaving {
+  transform: translate3d(-24px, 0, 0) scale(0.97);
+}
+
+.animated-view.slide-right.leaving {
+  transform: translate3d(24px, 0, 0) scale(0.97);
+}
+
+.animated-view.slide-up.leaving {
+  transform: translate3d(0, -18px, 0) scale(0.97);
+}
+
+.animated-view.fade.leaving {
+  transform: translate3d(0, -14px, 0) scale(0.98);
+  filter: blur(5px);
+}
+
+/* Tarjetas con entrada escalonada */
+.card-reveal {
+  animation: cardRevealUp 0.62s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: var(--reveal-delay, 0ms);
+}
+
+/* Entrada escalonada — todo el proyecto */
+.animated-view--stagger.page-reveal.enter {
+  animation-name: pageRevealInSlow;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.animated-view--stagger.page-reveal.dir-forward.enter {
+  animation-name: pageRevealForwardIn;
+}
+
+.animated-view--stagger.page-reveal.dir-back.enter {
+  animation-name: pageRevealBackIn;
+}
+
+.animated-view--stagger .card-reveal {
+  animation-duration: 1.15s;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.content-reveal {
+  animation: learnContentReveal 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: var(--reveal-delay, 0.15s);
+}
+
+.animated-view--stagger .content-reveal {
+  animation-duration: 1.05s;
+}
+
+.animated-view--stagger .learn-section-header,
+.animated-view--stagger .learn-activity-progress,
+.animated-view--stagger .learn-panel,
+.animated-view--stagger .learn-exercise-list,
+.animated-view--stagger .learn-exercise-shell {
+  animation: learnContentReveal 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animated-view--stagger .informacion-content h1 {
+  animation: learnContentReveal 0.95s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: 0.1s;
+}
+
+.animated-view--stagger .informacion-content .lead,
+.animated-view--stagger .informacion-content > .row > .col > p {
+  animation: learnContentReveal 0.95s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: 0.2s;
+}
+
+.animated-view--stagger .learn-activity-progress {
+  animation-delay: 0.45s;
+}
+
+.animated-view--stagger .learn-panel {
+  animation-delay: 0.55s;
+}
+
+.animated-view--stagger .learn-exercise-list,
+.animated-view--stagger .learn-exercise-shell {
+  animation-delay: 0.5s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animated-view,
+  .animated-view.enter,
+  .animated-view.leaving,
+  .card-reveal,
+  .content-reveal,
+  .section-animated {
+    animation: none !important;
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+}
+
+/* Smooth image enter/exit for theme images */
+.theme-image {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  opacity: 0;
+  transform: scale(.98) translateY(6px);
+  transition: opacity 320ms cubic-bezier(0.22, 1, 0.36, 1), transform 320ms cubic-bezier(0.22, 1, 0.36, 1), filter 320ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+.theme-image.visible {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+.theme-image.leaving {
+  opacity: 0;
+  transform: scale(.98) translateY(-6px);
+}
+
+/* Small helper for section items */
+.section-animated {
+  transition: opacity 320ms cubic-bezier(0.22, 1, 0.36, 1), transform 320ms cubic-bezier(0.22, 1, 0.36, 1);
+  opacity: 0;
+  transform: translateY(6px);
+  will-change: opacity, transform;
+}
+.section-animated.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 .shape-2 {
   width: 100px;
   height: 100px;

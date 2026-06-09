@@ -1,5 +1,6 @@
 import { Container, Row, Col, Button, Card } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import { navigateWithLeave } from "../utils/navigation";
 
 const Informacion = () => {
   const navigate = useNavigate();
@@ -26,7 +27,7 @@ const Informacion = () => {
 
       <Row className="g-4 mb-4">
         <Col md={4}>
-          <Card className="info-card h-100 shadow-sm" tabIndex="0">
+          <Card className="info-card content-reveal h-100 shadow-sm" tabIndex="0" style={{ "--reveal-delay": "0.3s" }}>
             <Card.Body>
               <Card.Title>Enfoque profesional</Card.Title>
               <Card.Text>
@@ -37,7 +38,7 @@ const Informacion = () => {
           </Card>
         </Col>
         <Col md={4}>
-          <Card className="info-card h-100 shadow-sm" tabIndex="0">
+          <Card className="info-card content-reveal h-100 shadow-sm" tabIndex="0" style={{ "--reveal-delay": "0.42s" }}>
             <Card.Body>
               <Card.Title>Aprende con claridad</Card.Title>
               <Card.Text>
@@ -48,7 +49,7 @@ const Informacion = () => {
           </Card>
         </Col>
         <Col md={4}>
-          <Card className="info-card h-100 shadow-sm" tabIndex="0">
+          <Card className="info-card content-reveal h-100 shadow-sm" tabIndex="0" style={{ "--reveal-delay": "0.54s" }}>
             <Card.Body>
               <Card.Title>Tu progreso asegurado</Card.Title>
               <Card.Text>
@@ -62,12 +63,12 @@ const Informacion = () => {
 
       <Row className="justify-content-center">
         <Col xs={12} md={8} lg={6}>
-          <div className="d-flex flex-column flex-sm-row gap-3 justify-content-center">
+          <div className="d-flex flex-column flex-sm-row gap-3 justify-content-center content-reveal" style={{ "--reveal-delay": "0.65s" }}>
             <Button
               variant="primary"
               size="lg"
               className="w-100"
-              onClick={() => navigate("/login")}
+              onClick={() => navigateWithLeave(navigate, "/login")}
             >
               Iniciar sesión
             </Button>
@@ -75,7 +76,7 @@ const Informacion = () => {
               variant="outline-primary"
               size="lg"
               className="w-100"
-              onClick={() => navigate("/register")}
+                onClick={() => navigateWithLeave(navigate, "/register")}
             >
               Registrarse
             </Button>

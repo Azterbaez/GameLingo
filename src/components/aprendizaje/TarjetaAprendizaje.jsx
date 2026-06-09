@@ -7,11 +7,18 @@ const TarjetaAprendizaje = ({
   progreso,
   onClick,
   deshabilitado = false,
+  style = {},
 }) => {
+  const { transitionDelay, ...restStyle } = style;
+
   return (
     <article
-      className={`card tarjeta-aprendizaje h-100 ${deshabilitado ? "tarjeta-aprendizaje--deshabilitada" : ""}`}
-      style={{ "--card-accent": color }}
+      className={`card tarjeta-aprendizaje h-100 card-reveal ${deshabilitado ? "tarjeta-aprendizaje--deshabilitada" : ""}`}
+      style={{
+        ["--card-accent"]: color,
+        ["--reveal-delay"]: transitionDelay ?? "0ms",
+        ...restStyle,
+      }}
       onClick={deshabilitado ? undefined : onClick}
       role={deshabilitado ? undefined : "button"}
       tabIndex={deshabilitado ? -1 : 0}

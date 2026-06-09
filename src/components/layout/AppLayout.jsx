@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
 import { Outlet } from "react-router-dom";
+import AnimatedView from "../animations/AnimatedView";
 import Encabezado from "../navegacion/Encabezado";
 import SubheaderNiveles from "../navegacion/SubheaderNiveles";
+import { usePageTransition } from "../../hooks/usePageTransition";
 
 const AppLayout = () => {
   const [mostrarSubir, setMostrarSubir] = useState(false);
@@ -16,12 +18,23 @@ const AppLayout = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  const { animKey, direction, duration, staggerClass } = usePageTransition();
+
   return (
     <div className="app-layout-learn app-layout-learn--con-nav-movil">
       <Encabezado modoAprendizaje />
       <SubheaderNiveles />
       <main className="learn-main" id="learn-main-content">
-        <Outlet />
+        <AnimatedView
+          animKey={animKey}
+          variant="pageReveal"
+          direction={direction}
+          duration={duration}
+          className={staggerClass}
+          data-route-anim
+        >
+          <Outlet />
+        </AnimatedView>
       </main>
       <button
         type="button"

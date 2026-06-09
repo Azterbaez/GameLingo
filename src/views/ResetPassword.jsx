@@ -81,7 +81,7 @@ const ResetPassword = () => {
         <Container>
           <Row className="justify-content-center">
             <Col lg={4} md={6}>
-              <Card className="border-0 shadow-lg">
+              <Card className="border-0 shadow-lg content-reveal" style={{ "--reveal-delay": "0.25s" }}>
                 <Card.Body className="p-5 text-center">
                   <div
                     className="mb-4"
@@ -122,7 +122,7 @@ const ResetPassword = () => {
       <Container fluid className="min-vh-100 d-flex align-items-center">
         <Row className="w-100 justify-content-center">
           <Col lg={4} md={8}>
-            <Card className="border-0 shadow-lg">
+            <Card className="border-0 shadow-lg content-reveal" style={{ "--reveal-delay": "0.3s" }}>
               <Card.Body className="p-5">
                 <div className="text-center mb-4">
                   <h2 className="fw-bold text-azul-oscuro">Restablecer Contraseña</h2>

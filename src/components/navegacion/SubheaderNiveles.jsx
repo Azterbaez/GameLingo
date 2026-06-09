@@ -3,17 +3,26 @@ import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { Container } from "react-bootstrap";
 import { useLearning } from "../../context/LearningContext";
 import { LEARN_ROUTES, SUBHEADER_PASOS } from "../../utils/constants";
+import { navigateWithLeave } from "../../utils/navigation";
 
 function pasoActivo(pathname) {
   if (/\/jugar\//.test(pathname) || /\/actividades/.test(pathname)) {
     return "actividades";
   }
 
-  if (/\/temas/.test(pathname)) {
+  if (/\/temas\//.test(pathname) || /^\/curso\/[a-z0-9_-]+\/\d+$/.test(pathname)) {
     return "temas";
   }
 
-  return "niveles";
+  if (/^\/curso\/[a-z0-9_-]+$/.test(pathname)) {
+    return "niveles";
+  }
+
+  if (/^\/curso$/.test(pathname)) {
+    return "curso";
+  }
+
+  return "curso";
 }
 
 function subtituloPaso(
@@ -33,6 +42,10 @@ function subtituloPaso(
     );
   }
 
+  if (pasoId === "curso") {
+    return nivelSeleccionado?.nombre ?? null;
+  }
+
   if (pasoId === "temas") {
     return temaSeleccionado?.nombre ?? topicId ?? null;
   }
@@ -47,13 +60,14 @@ function subtituloPaso(
   return null;
 }
 
-function rutaPaso(pasoId, { levelId, topicId }) {
+function rutaPaso(pasoId, { levelId, subnivel, topicId }) {
+  if (pasoId === "curso") return "/curso";
   if (pasoId === "niveles") {
-    return LEARN_ROUTES.niveles;
+    return levelId ? LEARN_ROUTES.nivel(levelId) : LEARN_ROUTES.niveles;
   }
 
   if (pasoId === "temas" && levelId) {
-    return LEARN_ROUTES.temas(levelId);
+    return LEARN_ROUTES.temas(levelId, subnivel ?? 1);
   }
 
   if (
@@ -63,6 +77,7 @@ function rutaPaso(pasoId, { levelId, topicId }) {
   ) {
     return LEARN_ROUTES.actividades(
       levelId,
+      subnivel ?? 1,
       topicId
     );
   }
@@ -74,11 +89,13 @@ const SubheaderNiveles = () => {
   const { pathname } = useLocation();
   const navigate = useNavigate();
 
-  const { levelId, topicId } = useParams();
+  const { levelId, subnivel, topicId } = useParams();
 
   const {
     nivelSeleccionado,
     temaSeleccionado,
+    setTemaSeleccionado,
+    limpiarAprendizaje,
   } = useLearning();
 
   const activo = pasoActivo(pathname);
@@ -90,16 +107,18 @@ const SubheaderNiveles = () => {
           paso.id,
           {
             levelId,
+            subnivel,
             topicId,
           }
         );
 
         const habilitado =
-          paso.id === "niveles" ||
+          (paso.id === "curso" && activo !== "curso") ||
+          (paso.id === "niveles" && Boolean(levelId)) ||
           (paso.id === "temas" &&
-            Boolean(levelId)) ||
+            Boolean(levelId && subnivel)) ||
           (paso.id === "actividades" &&
-            Boolean(levelId && topicId));
+            Boolean(levelId && subnivel && topicId));
 
         return {
           ...paso,
@@ -121,6 +140,7 @@ const SubheaderNiveles = () => {
     [
       activo,
       levelId,
+      subnivel,
       topicId,
       nivelSeleccionado,
       temaSeleccionado,
@@ -130,7 +150,13 @@ const SubheaderNiveles = () => {
   const irAPaso = (paso) => {
     if (!paso.habilitado || !paso.ruta) return;
 
-    navigate(paso.ruta);
+    if (paso.id === "curso") {
+      limpiarAprendizaje();
+    } else if (paso.id === "niveles" || paso.id === "temas") {
+      setTemaSeleccionado(null);
+    }
+
+    navigateWithLeave(navigate, paso.ruta);
   };
 
   return (

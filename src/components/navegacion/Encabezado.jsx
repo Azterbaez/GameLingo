@@ -6,6 +6,7 @@ import logo from "../../assets/image/logo.png";
 import avatargiraffe from "../../assets/image/Avatargiraffe.png";
 
 import { usePerfil } from "../../context/PerfilContext";
+import { navigateWithLeave } from "../../utils/navigation";
 import { supabase } from "../../assets/database/supabaseconfig";
 import NotificacionOperacion from "../NotificacionOperacione";
 import NombreMovil from "./NombreMovil";
@@ -23,7 +24,7 @@ const Encabezado = ({ modoAprendizaje = false }) => {
   const manejarToggle = () => setMostrarMenu(!mostrarMenu);
 
   const manejarNavegacion = (ruta) => {
-    navigate(ruta);
+    navigateWithLeave(navigate, ruta);
     setMostrarMenu(false);
   };
 
@@ -139,7 +140,7 @@ const Encabezado = ({ modoAprendizaje = false }) => {
                 Inicio
               </Nav.Link>
 
-              <Nav.Link onClick={() => manejarNavegacion("/aprender/niveles")}>
+              <Nav.Link onClick={() => manejarNavegacion("/curso")}>
                 Aprender
               </Nav.Link>
 
@@ -159,11 +160,11 @@ const Encabezado = ({ modoAprendizaje = false }) => {
     Ruta de aprendizaje
   </h6>
 
-  <Nav.Link onClick={() => manejarNavegacion("/aprender/niveles")}>
+<Nav.Link onClick={() => manejarNavegacion("/curso")}> 
     Niveles
   </Nav.Link>
 
-  <Nav.Link onClick={() => manejarNavegacion("/aprender")}>
+  <Nav.Link onClick={() => manejarNavegacion("/curso")}> 
     Aprender inglés
   </Nav.Link>
 

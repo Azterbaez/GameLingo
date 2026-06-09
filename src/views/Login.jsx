@@ -89,7 +89,7 @@ const Login = () => {
           {/* PANEL IZQUIERDO */}
 
           <Col lg={6} className="d-none d-lg-block">
-            <div className="hero-panel px-5">
+            <div className="hero-panel px-5 content-reveal" style={{ "--reveal-delay": "0.2s" }}>
               <div className="mb-4">
                 <span className="badge bg-light text-primary px-4 py-2 rounded-pill">
                   Plataforma Educativa
@@ -108,21 +108,21 @@ const Login = () => {
 
               <Row className="mt-5 g-3">
                 <Col md={4}>
-                  <div className="stat-box text-center">
+                  <div className="stat-box text-center content-reveal" style={{ "--reveal-delay": "0.45s" }}>
                     <FaGamepad size={30} />
                     <h5 className="mt-3">Mini Juegos</h5>
                   </div>
                 </Col>
 
                 <Col md={4}>
-                  <div className="stat-box text-center">
+                  <div className="stat-box text-center content-reveal" style={{ "--reveal-delay": "0.55s" }}>
                     <FaTrophy size={30} />
                     <h5 className="mt-3">Logros</h5>
                   </div>
                 </Col>
 
                 <Col md={4}>
-                  <div className="stat-box text-center">
+                  <div className="stat-box text-center content-reveal" style={{ "--reveal-delay": "0.65s" }}>
                     <FaGraduationCap size={30} />
                     <h5 className="mt-3">Aprendizaje</h5>
                   </div>
@@ -134,7 +134,7 @@ const Login = () => {
           {/* LOGIN */}
 
           <Col lg={4} md={8}>
-            <Card className="login-card border-0">
+            <Card className="login-card border-0 content-reveal" style={{ "--reveal-delay": "0.35s" }}>
               <Card.Body className="p-5">
                 <div className="text-center mb-4">
                   <div className="logo-circle mb-3">

@@ -1,6 +1,7 @@
 import React from "react";
 import { Container, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import { navigateWithLeave } from "../utils/navigation";
 import { LEARN_ROUTES } from "../utils/constants";
 import PaginaMeta from "../components/meta/PaginaMeta";
 
@@ -11,7 +12,7 @@ const Inicio = () => {
     <div className="inicio-page pagina-con-nav-movil">
       <PaginaMeta titulo="Inicio" />
       <Container className="d-flex justify-content-center align-items-center min-vh-100">
-        <div className="card p-5 text-center shadow-lg bienvenida-card">
+        <div className="card p-5 text-center shadow-lg bienvenida-card content-reveal" style={{ "--reveal-delay": "0.25s" }}>
           <h1 style={{ color: "#2563EB", fontWeight: "700" }}>
             Bienvenido a GameLingo
           </h1>
@@ -24,7 +25,7 @@ const Inicio = () => {
           <Button
             variant="primary"
             className="mt-4"
-            onClick={() => navigate(LEARN_ROUTES.niveles)}
+            onClick={() => navigateWithLeave(navigate, LEARN_ROUTES.curso)}
           >
             Empezar a aprender
           </Button>

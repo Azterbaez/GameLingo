@@ -1,8 +1,10 @@
+import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { Container } from "react-bootstrap";
 import { useLearning } from "../../context/LearningContext";
 import { LEARN_ROUTES } from "../../utils/constants";
 import { obtenerTema } from "../../data/cursosIngles";
+import { navigateWithLeave } from "../../utils/navigation";
 import PanelVocabulario from "../../components/aprendizaje/PanelVocabulario";
 import ListaEjercicios from "../../components/aprendizaje/ListaEjercicios";
 import EncabezadoSeccion from "../../components/aprendizaje/EncabezadoSeccion";
@@ -11,13 +13,19 @@ import BarraProgresoCircular from "../../components/aprendizaje/BarraProgresoCir
 import { useProgresoAprendizaje } from "../../hooks/useProgresoAprendizaje";
 
 const TemaDetalleView = () => {
-  const { levelId, topicId } = useParams();
+  const { levelId, subnivel, topicId } = useParams();
   const navigate = useNavigate();
-  const { temaSeleccionado } = useLearning();
+  const { temaSeleccionado, setTemaSeleccionado } = useLearning();
   const { estaCompletado, ejerciciosCompletadosEnTema } = useProgresoAprendizaje();
 
   const tema = obtenerTema(levelId, topicId);
   const nombreTema = tema?.nombre ?? temaSeleccionado?.nombre ?? topicId;
+
+  useEffect(() => {
+    if (tema) {
+      setTemaSeleccionado({ id: tema.id, nombre: tema.nombre });
+    }
+  }, [tema, setTemaSeleccionado]);
 
   if (!tema) {
     return (
@@ -27,7 +35,7 @@ const TemaDetalleView = () => {
           <button
             type="button"
             className="learn-btn learn-btn--primary"
-            onClick={() => navigate(LEARN_ROUTES.temas(levelId))}
+            onClick={() => navigateWithLeave(navigate, LEARN_ROUTES.temas(levelId, subnivel ?? 1))}
           >
             Ver temas
           </button>
@@ -46,7 +54,7 @@ const TemaDetalleView = () => {
       <PaginaMeta titulo={nombreTema} />
       <EncabezadoSeccion
         volver="Temas"
-        onVolver={() => navigate(LEARN_ROUTES.temas(levelId))}
+        onVolver={() => navigateWithLeave(navigate, LEARN_ROUTES.temas(levelId, subnivel ?? 1))}
         titulo={nombreTema}
         descripcion={tema.descripcion}
       >
@@ -55,6 +63,23 @@ const TemaDetalleView = () => {
           {completados}/{total}
         </span>
       </EncabezadoSeccion>
+
+      <div className="learn-activity-progress mb-3">
+        <div className="d-flex justify-content-between small text-muted mb-1">
+          <span>Progreso del tema</span>
+          <span>{porcentaje}% · {completados}/{total} actividades</span>
+        </div>
+        <div className="progress learn-activity-progress__bar">
+          <div
+            className="progress-bar"
+            role="progressbar"
+            style={{ width: `${porcentaje}%` }}
+            aria-valuenow={porcentaje}
+            aria-valuemin={0}
+            aria-valuemax={100}
+          />
+        </div>
+      </div>
 
       {tema.leccion && (
         <PanelVocabulario
@@ -78,7 +103,12 @@ const TemaDetalleView = () => {
             levelId={levelId}
             topicId={topicId}
             estaCompletado={estaCompletado}
-            onElegir={(id) => navigate(LEARN_ROUTES.jugar(levelId, topicId, id))}
+            onElegir={(id) =>
+              navigateWithLeave(
+                navigate,
+                LEARN_ROUTES.jugar(levelId, subnivel ?? 1, topicId, id)
+              )
+            }
           />
 
           {completados === total && total > 0 && (

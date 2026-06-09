@@ -90,12 +90,13 @@ const Perfil = () => {
     <PaginaMeta titulo="Mi perfil" />
     <Container className="d-flex justify-content-center align-items-center min-vh-100 py-5">
       <Card
-        className="shadow-lg border-0"
+        className="shadow-lg border-0 content-reveal"
         style={{
           width: "100%",
           maxWidth: "750px",
           borderRadius: "25px",
           padding: "30px",
+          "--reveal-delay": "0.25s",
         }}
       >
         <h2 className="text-center mb-4 fw-bold">
