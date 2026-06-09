@@ -35,7 +35,7 @@ function renderEjercicio(ejercicio, onCorrecto) {
 }
 
 const EjercicioView = () => {
-  const { levelId, topicId, exerciseId } = useParams();
+  const { levelId, subnivel, topicId, exerciseId } = useParams();
   const navigate = useNavigate();
   const { estaCompletado, marcarCompletado } = useProgresoAprendizaje();
 
@@ -66,7 +66,7 @@ const EjercicioView = () => {
       <PaginaMeta titulo={ejercicio.titulo} />
       <EncabezadoSeccion
         volver={tema.nombre}
-        onVolver={() => navigate(LEARN_ROUTES.actividades(levelId, topicId))}
+        onVolver={() => navigate(LEARN_ROUTES.actividades(levelId, subnivel ?? 1, topicId))}
         titulo={`Ejercicio ${indice + 1} de ${tema.ejercicios.length}`}
       >
         {completado && (
@@ -110,7 +110,7 @@ const EjercicioView = () => {
         {anterior ? (
           <Button
             className="learn-btn learn-btn--nav"
-            onClick={() => navigate(LEARN_ROUTES.jugar(levelId, topicId, anterior.id))}
+            onClick={() => navigate(LEARN_ROUTES.jugar(levelId, subnivel ?? 1, topicId, anterior.id))}
           >
             <i className="bi bi-chevron-left me-1" />
             Anterior
@@ -121,7 +121,7 @@ const EjercicioView = () => {
         {siguiente ? (
           <Button
             className="learn-btn learn-btn--nav-next"
-            onClick={() => navigate(LEARN_ROUTES.jugar(levelId, topicId, siguiente.id))}
+            onClick={() => navigate(LEARN_ROUTES.jugar(levelId, subnivel ?? 1, topicId, siguiente.id))}
           >
             Siguiente
             <i className="bi bi-chevron-right ms-1" />
@@ -129,7 +129,7 @@ const EjercicioView = () => {
         ) : (
           <Button
             className="learn-btn learn-btn--finish"
-            onClick={() => navigate(LEARN_ROUTES.actividades(levelId, topicId))}
+            onClick={() => navigate(LEARN_ROUTES.actividades(levelId, subnivel ?? 1, topicId))}
           >
             <i className="bi bi-trophy me-2" />
             Terminar tema
