@@ -1,0 +1,67 @@
+/* Estilos específicos para la vista de Perfil */
+
+.perfil-page {
+    min-height: 100vh;
+    background: var(--app-bg);
+}
+
+.perfil-card {
+    width: 100%;
+    max-width: 750px;
+    border-radius: 25px !important;
+    padding: 30px;
+    --reveal-delay: 0.25s;
+    background: var(--card-bg) !important;
+}
+
+.perfil-avatar-principal {
+    width: 85px;
+    height: 85px;
+    border-radius: 50%;
+    border: 5px solid #e4b313;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.perfil-avatar-principal:hover {
+    transform: scale(1.1);
+}
+
+.avatar-selector-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+    gap: 15px;
+    justify-items: center;
+    margin-top: 1rem;
+}
+
+.avatar-item {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 3px solid #e4b313;
+    transform: scale(1);
+}
+
+.avatar-item:hover {
+    transform: scale(1.1);
+}
+
+.avatar-item.selected {
+    border: 4px solid var(--brand-blue-main);
+    transform: scale(1.15);
+}
+
+@media (max-width: 768px) {
+    .perfil-card {
+        margin: 15px;
+        padding: 20px !important;
+    }
+    .perfil-avatar-principal {
+        width: 120px !important;
+        height: 120px !important;
+    }
+}

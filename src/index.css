@@ -15,6 +15,10 @@ body,
   );
 }
 
+[data-theme='light'] .inicio-page {
+  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 58%, #eef4ff 100%);
+}
+
 .inicio-page,
 .perfil-page.pagina-con-nav-movil {
   padding-top: 4.5rem;

@@ -469,6 +469,7 @@
   border: 1px solid var(--card-border-custom) !important;
   border-radius: 16px !important;
   background: #fff !important;
+  color: #0f172a !important;
   transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s;
   overflow: hidden;
 }
@@ -507,8 +508,17 @@
 }
 
 .tarjeta-aprendizaje .card-title {
-  color: inherit;
+  color: #0f172a !important;
   font-weight: 700;
+}
+
+.tarjeta-aprendizaje p,
+.tarjeta-aprendizaje small,
+.tarjeta-aprendizaje span,
+.tarjeta-aprendizaje .text-muted,
+.tarjeta-aprendizaje .text-secondary {
+  color: #475569 !important;
+  opacity: 1 !important;
 }
 
 .learn-activity-progress__bar {
@@ -618,9 +628,24 @@
   transform: translateX(4px);
 }
 
+.learn-exercise-list__item:hover .learn-exercise-list__title,
+.learn-exercise-list__item:hover p,
+.learn-exercise-list__item:hover small,
+.learn-exercise-list__item:hover span {
+  color: #0f172a !important;
+}
+
 .learn-exercise-list__item--done {
   background: #f0fdf4;
   border-color: #86efac;
+  color: #0f172a;
+}
+
+.learn-exercise-list__item--done .learn-exercise-list__title,
+.learn-exercise-list__item--done p,
+.learn-exercise-list__item--done small,
+.learn-exercise-list__item--done span {
+  color: #0f172a !important;
 }
 
 .learn-exercise-list__index {
@@ -704,12 +729,44 @@
   border: 1px solid #e2e8f0;
   box-shadow: 0 24px 48px rgba(15, 23, 42, 0.12);
   overflow: hidden;
+  color: #0f172a !important;
+}
+
+.learn-exercise-shell h1,
+.learn-exercise-shell h2,
+.learn-exercise-shell h3,
+.learn-exercise-shell h4,
+.learn-exercise-shell h5,
+.learn-exercise-shell h6,
+.learn-exercise-shell p,
+.learn-exercise-shell label,
+.learn-exercise-shell span {
+  color: #0f172a !important;
+}
+
+.learn-exercise-shell .text-muted,
+.learn-exercise-shell .text-secondary,
+.learn-exercise-shell .form-label {
+  color: #475569 !important;
+  opacity: 1 !important;
 }
 
 .learn-exercise-shell__top {
   padding: 0.85rem 1rem;
   background: linear-gradient(135deg, #1e3a8a, #4338ca);
   color: #fff;
+}
+
+.learn-exercise-shell__top,
+.learn-exercise-shell__top h1,
+.learn-exercise-shell__top h2,
+.learn-exercise-shell__top h3,
+.learn-exercise-shell__top h4,
+.learn-exercise-shell__top h5,
+.learn-exercise-shell__top h6,
+.learn-exercise-shell__top p,
+.learn-exercise-shell__top span {
+  color: #fff !important;
 }
 
 @media (min-width: 576px) {
@@ -1074,6 +1131,21 @@
   font-weight: 700;
 }
 
+:root:not([data-theme='light']) .learn-section-header__desc,
+:root:not([data-theme='light']) .learn-panel__head p,
+:root:not([data-theme='light']) .learn-panel p,
+:root:not([data-theme='light']) .learn-activity-progress small,
+:root:not([data-theme='light']) .nombre-movil__nivel,
+:root:not([data-theme='light']) .navbar-brand-compact__subtitle {
+  color: #dbeafe !important;
+  opacity: 1 !important;
+}
+
+:root:not([data-theme='light']) .barra-nav-movil__item,
+:root:not([data-theme='light']) .subheader-niveles__separador {
+  color: #cbd5e1;
+}
+
 /* =========================
    MÓVIL — NOMBRE Y NAVEGACIÓN
 ========================= */
@@ -1233,6 +1305,7 @@
 [data-theme='light'] .learn-exercise-list__item {
   background: #ffffff;
   border-color: #e2e8f0;
+  color: #0f172a;
 }
 
 [data-theme='light'] .learn-exercise-list__item:hover {
@@ -1252,6 +1325,7 @@
 [data-theme='light'] .learn-panel {
   background: #ffffff;
   border-color: #e2e8f0;
+  color: #0f172a !important;
 }
 
 [data-theme='light'] .learn-stats-pill {
@@ -1261,7 +1335,7 @@
 }
 
 [data-theme='light'] .learn-section-header__title {
-  color: #0f172a;
+  color: #0f172a !important;
 }
 
 [data-theme='light'] .learn-back-btn {
@@ -1272,4 +1346,66 @@
 [data-theme='light'] .learn-back-btn:hover {
   background: rgba(15, 23, 42, 0.12);
   color: #0f172a;
+}
+
+[data-theme='light'] .app-layout-learn .learn-main {
+  background:
+    radial-gradient(ellipse 80% 40% at 50% -10%, rgba(37, 99, 235, 0.08), transparent),
+    linear-gradient(180deg, #ffffff 0%, #f8fafc 56%, #eef4ff 100%);
+}
+
+[data-theme='light'] .navbar--aprendizaje {
+  background: #ffffff !important;
+  border-bottom-color: rgba(15, 23, 42, 0.12);
+}
+
+[data-theme='light'] .navbar-brand-compact__subtitle,
+[data-theme='light'] .navbar-aprendizaje-perfil__name,
+[data-theme='light'] .nombre-movil__nombre {
+  color: #1e293b;
+}
+
+[data-theme='light'] .app-layout-learn .subheader-niveles,
+[data-theme='light'] .barra-nav-movil {
+  background: rgba(255, 255, 255, 0.96);
+  border-color: rgba(15, 23, 42, 0.12);
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.08);
+}
+
+[data-theme='light'] .subheader-niveles__boton {
+  background: #ffffff;
+  color: #1e293b;
+  border-color: rgba(15, 23, 42, 0.1);
+}
+
+[data-theme='light'] .subheader-niveles__boton:hover:not(:disabled) {
+  background: #f1f5f9;
+}
+
+[data-theme='light'] .subheader-niveles__detalle,
+[data-theme='light'] .nombre-movil__nivel {
+  color: #475569;
+}
+
+[data-theme='light'] .subheader-niveles__separador,
+[data-theme='light'] .barra-nav-movil__item {
+  color: #64748b;
+}
+
+[data-theme='light'] .learn-section-header__desc,
+[data-theme='light'] .learn-panel__head p,
+[data-theme='light'] .learn-exercise-list__title {
+  color: #475569 !important;
+}
+
+[data-theme='light'] .learn-vocab-table td,
+[data-theme='light'] .learn-vocab-table td:first-child,
+[data-theme='light'] .learn-panel__head h3 {
+  color: #0f172a !important;
+}
+
+[data-theme='light'] .learn-exercise-shell {
+  background: #ffffff;
+  border-color: #e2e8f0;
+  color: #0f172a !important;
 }

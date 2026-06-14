@@ -3,6 +3,7 @@ import { Container, Card, Form, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import NotificacionOperacion from "../components/NotificacionOperacione";
 import PaginaMeta from "../components/meta/PaginaMeta";
+import "./Perfil.css";
 
 import avatargiraffe from "../assets/image/Avatargiraffe.png";
 import avatarkoala from "../assets/image/Avatarkoala.png";
@@ -90,14 +91,7 @@ const Perfil = () => {
     <PaginaMeta titulo="Mi perfil" />
     <Container className="d-flex justify-content-center align-items-center min-vh-100 py-5">
       <Card
-        className="shadow-lg border-0 content-reveal"
-        style={{
-          width: "100%",
-          maxWidth: "750px",
-          borderRadius: "25px",
-          padding: "30px",
-          "--reveal-delay": "0.25s",
-        }}
+        className="perfil-card shadow-lg border-0 content-reveal"
       >
         <h2 className="text-center mb-4 fw-bold">
           Mi perfil
@@ -111,13 +105,7 @@ const Perfil = () => {
           <img
             src={avatar || avatargiraffe}
             alt="Avatar seleccionado"
-            style={{
-              width: "85px",
-              height: "85px",
-              borderRadius: "50%",
-              border: "5px solid #e4b313",
-              objectFit: "cover",
-            }}
+            className="perfil-avatar-principal"
           />
         </div>
 
@@ -168,15 +156,7 @@ const Perfil = () => {
             Selecciona tu avatar
           </Form.Label>
 
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns:
-                "repeat(auto-fill, minmax(90px, 1fr))",
-              gap: "15px",
-              justifyItems: "center",
-            }}
-          >
+          <div className="avatar-selector-grid">
             {[
               avatargiraffe,
               avatarkoala,
@@ -212,24 +192,7 @@ const Perfil = () => {
                 src={img}
                 alt={`avatar-${i}`}
                 onClick={() => setAvatar(img)}
-                style={{
-                  width: "60px",
-                  height: "60px",
-                  borderRadius: "50%",
-                  objectFit: "cover",
-                  cursor: "pointer",
-                  transition: "0.3s",
-
-                  border:
-                    avatar === img
-                      ? "4px solid #1e40af"
-                      : "3px solid #e4b313",
-
-                  transform:
-                    avatar === img
-                      ? "scale(1.1)"
-                      : "scale(1)",
-                }}
+                className={`avatar-item ${avatar === img ? 'selected' : ''}`}
               />
             ))}
           </div>

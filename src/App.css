@@ -1,46 +1,47 @@
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 
 :root {
-  /* Paleta Profesional Azter */
-  --brand-blue-deep: #0b0f1a;    /* Azul noche más profundo */
-  --brand-blue-main: #1e40af;    /* Azul medio para identidad */
-  --brand-blue-light: #60a5fa;   /* Azul más suave para mejor contraste */
-  --brand-orange: #ff9800;       /* Naranja vibrante y amigable */
-  --brand-orange-light: #ffb74d; /* Naranja pastel para estados secundarios */
-  --glass-bg: rgba(255, 255, 255, 0.05);
-  --glass-border: rgba(255, 255, 255, 0.1);
-  --text-main: #ffffff;          /* Texto principal blanco puro */
-  --text-muted: #cbd5e1;         /* Texto secundario más claro para mejor contraste en azul */
+  /* Paleta Profesional Azter - Colores Relajantes para Modo Oscuro */
+  --brand-blue-deep: #0f172a;    /* Azul pizarra profundo y descansado */
+  --brand-blue-main: #1e3a8a;    /* Azul real suave */
+  --brand-blue-light: #93c5fd;   /* Azul cielo pastel */
+  --brand-orange: #f59e0b;       /* Naranja ámbar cálido */
+  --brand-orange-light: #fbbf24; /* Naranja suave */
+  --glass-bg: rgba(255, 255, 255, 0.08); /* Fondo de cristal más visible */
+  --glass-border: rgba(255, 255, 255, 0.15); /* Borde de cristal más visible */
+  --text-main: #e2e8f0;          /* Texto principal blanco suave */
+  --text-muted: #ffffff;         /* Texto secundario claro para fondos azules oscuros */
 
   /* Variables Dinámicas (Por defecto Oscuro) */
   --app-bg: var(--brand-blue-deep);
   --app-text: var(--text-main);
-  --card-bg: rgba(15, 23, 42, 0.8);
-  --navbar-bg: linear-gradient(90deg, var(--brand-blue-main), var(--brand-blue-deep));
-  --nav-link-color: #ffffff;
+  --card-bg: rgba(31, 41, 55, 0.8); /* Fondo de tarjeta más oscuro y sutil */
+  --navbar-bg: #1e293b; /* Navbar sólido y relajado */
+  --nav-link-color: var(--text-main); /* Enlaces de navegación con texto principal */
 
   /* Sobrescribir variables de Bootstrap globalmente */
   --bs-primary: var(--brand-blue-main);
-  --bs-primary-rgb: 30, 64, 175;
+  --bs-primary-rgb: 30, 58, 138;
   --bs-warning: var(--brand-orange);
-  --bs-warning-rgb: 255, 152, 0;
+  --bs-warning-rgb: 245, 158, 11;
   --bs-link-color: var(--brand-orange-light);
   --bs-link-hover-color: var(--brand-orange-light);
+  --bs-body-color: var(--app-text); /* Asegura que el color del cuerpo de Bootstrap use app-text */
 }
 
 /* Modo Claro (Activado por atributo) */
 [data-theme='light'] {
-  --app-bg: #f8fafc;
+  --app-bg: #2064ca; /* Fondo de la página blanco */
   --app-text: #0f172a;
-  --text-muted: #475569;
+  --text-muted: #ffffff;
   --glass-bg: rgba(255, 255, 255, 0.9);
-  --glass-border: rgba(15, 23, 42, 0.12);
-  --card-bg: #ffffff;
+  --glass-border: rgba(15, 23, 42, 0.12); /* Mantener borde de cristal claro */
+  --card-bg: #ffffff; /* Superficies blancas en modo claro */
   --navbar-bg: #ffffff; /* Navbar blanco en modo claro para sencillez */
-  --nav-link-color: #1e40af;
+  --nav-link-color: var(--brand-blue-main); /* Enlaces de navegación con el azul principal */
   
   /* Ajuste de Bootstrap para modo claro */
-  --bs-body-bg: #f8fafc;
+  --bs-body-bg: #1e3a8a; /* Fondo del cuerpo de Bootstrap blanco */
   --bs-body-color: #0f172a;
 }
 
@@ -143,7 +144,7 @@ body {
 }
 
 .menu-lateral .nav-link {
-  color: white !important;
+  color: rgb(236, 122, 15) !important;
 }
 
 .menu-lateral .nav-link:hover {
@@ -156,7 +157,7 @@ body {
 
 .perfil-usuario {
   background: rgba(255,255,255,.15);
-  color: white;
+  color: rgb(255, 255, 255);
   border: 1px solid rgba(255,255,255,.2);
 }
 
@@ -186,6 +187,35 @@ body {
   border: none !important;
   border-radius: 24px !important;
   box-shadow: 0 10px 25px rgba(0,0,0,.08);
+  background: var(--card-bg) !important;
+  color: var(--app-text) !important;
+}
+
+/* Modo claro: tarjetas blancas con texto oscuro legible */
+[data-theme='light'] .card,
+[data-theme='light'] .card h1, [data-theme='light'] .card h2, [data-theme='light'] .card h3, [data-theme='light'] .card h4, [data-theme='light'] .card h5, [data-theme='light'] .card h6,
+[data-theme='light'] .card p, [data-theme='light'] .card small, [data-theme='light'] .card span, [data-theme='light'] .card label {
+  color: var(--app-text) !important;
+}
+
+[data-theme='light'] .card .text-muted,
+[data-theme='light'] .card .text-secondary,
+[data-theme='light'] .card .text-white-50 {
+  color: var(--text-muted) !important;
+  opacity: 1 !important;
+}
+
+[data-theme='light'] .card .text-white,
+[data-theme='light'] .card label.text-white,
+[data-theme='light'] .card p.text-white,
+[data-theme='light'] .card h1.text-white,
+[data-theme='light'] .card h2.text-white,
+[data-theme='light'] .card h3.text-white,
+[data-theme='light'] .card h4.text-white,
+[data-theme='light'] .card h5.text-white,
+[data-theme='light'] .card h6.text-white,
+[data-theme='light'] .card span.text-white {
+  color: var(--app-text) !important;
 }
 
 /* =========================
@@ -196,6 +226,11 @@ body {
   min-height: 100vh;
   position: relative;
   overflow: hidden;
+  background: var(--app-bg);
+}
+
+/* Degradado solo para el modo oscuro del login */
+:root:not([data-theme='light']) .login-page {
   background: linear-gradient(
     160deg,
     var(--brand-blue-deep) 0%,
@@ -214,6 +249,12 @@ body {
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5) !important;
   position: relative;
   z-index: 2;
+}
+
+[data-theme='light'] .login-card {
+  background: #ffffff !important;
+  border-color: rgba(15, 23, 42, 0.1) !important;
+  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.14) !important;
 }
 
 /* LOGO */
@@ -252,6 +293,19 @@ body {
   color: var(--text-muted);
 }
 
+[data-theme='light'] .login-page .hero-panel,
+[data-theme='light'] .login-page .hero-panel .text-black,
+[data-theme='light'] .login-page .hero-title,
+[data-theme='light'] .login-page .hero-description {
+  color: var(--app-text) !important;
+}
+
+[data-theme='light'] .login-page .text-white-50,
+[data-theme='light'] .login-page .hero-panel p {
+  color: var(--text-muted) !important;
+  opacity: 1 !important;
+}
+
 /* ESTADÍSTICAS */
 
 .stat-box {
@@ -262,6 +316,12 @@ body {
   padding: 25px;
   color: var(--app-text);
   transition: .3s;
+}
+
+[data-theme='light'] .stat-box {
+  background: #ffffff;
+  border-color: rgba(15, 23, 42, 0.1);
+  box-shadow: 0 14px 34px rgba(15, 23, 42, 0.08);
 }
 
 .stat-box h2, .stat-box h3, .stat-box h5 {
@@ -286,7 +346,7 @@ body {
   border: 1px solid var(--glass-border) !important;
 }
 
-.input-group-text {
+.input-group-text:not(.ui-addon) { /* Excluir ui-addon para no sobrescribir su estilo */
   background: var(--glass-bg) !important;
   border: 1px solid var(--glass-border) !important;
   color: var(--app-text) !important;
@@ -315,12 +375,6 @@ body {
   position: relative;
   overflow: hidden;
   background: var(--app-bg);
-}
-
-@media (prefers-color-scheme: dark) {
-  .informacion-page {
-    background: radial-gradient(circle at top right, #1e1b4b, var(--brand-blue-deep));
-  }
 }
 
 .informacion-content {
@@ -439,7 +493,7 @@ body {
 
 /* Corregir visibilidad en barras de progreso y textos de secciones */
 .progress {
-  background-color: rgba(255, 255, 255, 0.1) !important;
+  background-color: rgba(199, 25, 25, 0.26) !important;
   border-radius: 99px !important;
   height: 12px !important;
 }
@@ -460,7 +514,7 @@ body {
 .learn-exercise-shell h1, .learn-exercise-shell h2, .learn-exercise-shell h3,
 .learn-exercise-shell .text-dark,
 .info-card .text-dark {
-  color: var(--app-text) !important;
+  color: var(--app-text) !important; /* Mantener para que use el color del tema */
 }
 
 /* =========================
@@ -863,6 +917,26 @@ body {
   border-radius: 18px;
   box-shadow: 0 18px 50px rgba(2,6,23,0.12);
   background: linear-gradient(180deg, #ffffff, #fbfdff);
+  color: #0f172a;
+}
+
+.ui-card h1,
+.ui-card h2,
+.ui-card h3,
+.ui-card h4,
+.ui-card h5,
+.ui-card h6,
+.ui-card p,
+.ui-card label,
+.ui-card span {
+  color: #0f172a;
+}
+
+.ui-card .text-muted,
+.ui-card .text-secondary,
+.ui-card .text-white-50 {
+  color: #475569 !important;
+  opacity: 1 !important;
 }
 
 .ui-input {
@@ -987,8 +1061,8 @@ body {
 
 
 .avatar-option {
-  width: 12px !important;
-  height: 12px !important;
+  width: 40px !important;
+  height: 40px !important;
 
   border-radius: 5%;
   object-fit: cover;
@@ -1000,8 +1074,8 @@ body {
 }
 
 .avatar-preview {
-  width: 7px !important;
-  height: 7px !important;
+  width: 60px !important;
+  height: 60px !important;
 
   border-radius: 5%;
   object-fit: cover;
@@ -1014,17 +1088,17 @@ body {
   height: 44px;
 
   border-radius: 50%;
-  border: 2px solid #2563eb;
+  border: 2px solid var(--brand-blue-main); /* Usar variable para el borde */
 }
 
 .username {
   font-weight: bold;
-  color: white;
+  color: var(--nav-link-color);
   font-size: 13px;
 }
 
 .level {
-  color: #93c5fd;
+  color: var(--text-muted);
   font-size: 10px;
 }
 
@@ -1063,35 +1137,6 @@ img.avatar-option{
 .avatar-header:hover {
   transform: scale(1.1);
 }
-
-/* Subheader y layout /aprender → styles/aprendizaje.css */
-
-.encabezado-principal {
-  z-index: 1030;
-  background: linear-gradient(9deg, #1e40af, rgb(245, 194, 98), #1e40af) !important;
-}
-
-.app-footer {
-  position: fixed;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 1100;
-  color: rgba(255, 255, 255, 0.75);
-  font-size: 0.85rem;
-  padding: 0.35rem 0.75rem;
-  background: rgba(15, 23, 42, 0.5);
-  border-radius: 999px;
-  pointer-events: none;
-  user-select: none;
-}
-
-.encabezado-principal:not(.navbar--aprendizaje) {
-  min-height: 72px;
-  padding-top: 0.35rem;
-  padding-bottom: 0.35rem;
-}
-
 .navbar-brand-full {
   cursor: pointer;
   display: flex;
@@ -1103,7 +1148,7 @@ img.avatar-option{
 
 .navbar-brand-full__logo {
   border-radius: 50%;
-  border: 3px solid rgba(8, 22, 209, 0.9);
+  border: 3px solid var(--brand-blue-main); /* Usar variable para el borde */
   object-fit: cover;
   width: 48px;
   height: 48px;
@@ -1119,8 +1164,8 @@ img.avatar-option{
 .perfil-mini .avatar-header {
   width: 40px;
   height: 40px;
-  border-radius: 50%;
-  border: 2px solid #fbbf24;
+  border-radius: 50%; /* Mantener */
+  border: 2px solid var(--brand-orange); /* Usar variable para el borde */
   object-fit: cover;
   cursor: pointer;
 }
@@ -1133,35 +1178,13 @@ img.avatar-option{
 
 .perfil-mini .username {
   font-weight: 700;
-  color: #fff;
+  color: var(--nav-link-color);
   font-size: 0.9rem;
 }
 
 .perfil-mini .level {
-  color: #c7d7ff;
+  color: var(--text-muted);
   font-size: 0.75rem;
-}
-
-.perfil-page{
-  min-height:100vh;
-  background:linear-gradient(
-    135deg,
-    #1e40af,
-    #60a5fa
-  );
-}
-
-@media (max-width:768px){
-
-  .perfil-page .card{
-    margin:15px;
-    padding:20px !important;
-  }
-
-  .perfil-page img[alt="Avatar seleccionado"]{
-    width:120px !important;
-    height:120px !important;
-  }
 }
 
 .main-content {
@@ -1179,4 +1202,4 @@ img.avatar-option{
 
 .theme-toggle-btn i {
   filter: drop-shadow(0 0 5px rgba(255, 152, 0, 0.3));
-}
+} /* Mantener el efecto de sombra */
