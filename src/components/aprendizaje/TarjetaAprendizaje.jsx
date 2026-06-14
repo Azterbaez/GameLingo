@@ -44,7 +44,7 @@ const TarjetaAprendizaje = ({
               {badge && <span className="learn-badge learn-badge--intermedio">{badge}</span>}
             </div>
             {descripcion && (
-              <p className="text-muted small mb-0">{descripcion}</p>
+              <p className="small mb-0" style={{ color: 'var(--text-muted)' }}>{descripcion}</p>
             )}
           </div>
           {!deshabilitado && (
@@ -53,7 +53,7 @@ const TarjetaAprendizaje = ({
         </div>
         {typeof progreso === "number" && progreso >= 0 && (
           <div className="mt-auto pt-3">
-            <div className="d-flex justify-content-between small text-muted mb-1">
+            <div className="d-flex justify-content-between small mb-1" style={{ color: 'var(--text-muted)' }}>
               <span>Progreso</span>
               <span>{progreso}%</span>
             </div>

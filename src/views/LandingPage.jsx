@@ -22,12 +22,12 @@ const LandingPage = () => {
         <Row className="align-items-center g-5">
           {/* Panel Principal - Hero Section */}
           <Col lg={7} className="hero-panel text-start animated-view page-reveal enter">
-            <h1 className="mb-4 display-3 fw-bold">
-              Domina el Inglés de forma <span className="text-naranja">Inteligente</span>
+            <h1 className="mb-4 fw-extra-bold">
+              Aprender inglés nunca fue <span className="text-naranja">tan divertido</span>
             </h1>
-            <p className="lead mb-5 fs-4" style={{ color: 'rgba(255,255,255,0.9)' }}>
-              Aprende con una metodología estructurada, desde lo más básico hasta niveles intermedios. 
-              Practica con ejercicios reales de traducción, lectura y vocabulario.
+            <p className="lead mb-5 fs-5" style={{ color: 'rgba(255,255,255,0.8)', maxWidth: '90%' }}>
+              Únete a una experiencia de aprendizaje interactiva diseñada para todas las edades. 
+              Desde saludos básicos hasta conversaciones fluidas, nosotros te acompañamos paso a paso.
             </p>
             <div className="d-flex gap-3 flex-wrap">
               <Button 
@@ -51,21 +51,21 @@ const LandingPage = () => {
             {/* Estadísticas / Features */}
             <Row className="mt-5 g-4">
               <Col md={4}>
-                <div className="stat-box text-center">
+                <div className="stat-box text-center h-100">
                   <h3 className="text-naranja fw-bold mb-1">A1-A2</h3>
-                  <small>Niveles MCER</small>
+                  <small className="opacity-75">Niveles Oficiales</small>
                 </div>
               </Col>
               <Col md={4}>
-                <div className="stat-box text-center">
+                <div className="stat-box text-center h-100">
                   <h3 className="text-naranja fw-bold mb-1">+50</h3>
-                  <small>Lecciones</small>
+                  <small className="opacity-75">Lecciones Activas</small>
                 </div>
               </Col>
               <Col md={4}>
-                <div className="stat-box text-center">
+                <div className="stat-box text-center h-100">
                   <h3 className="text-naranja fw-bold mb-1">100%</h3>
-                  <small>Interactivo</small>
+                  <small className="opacity-75">Gamificado</small>
                 </div>
               </Col>
             </Row>

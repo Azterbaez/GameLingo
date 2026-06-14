@@ -97,11 +97,11 @@ const Login = () => {
               </div>
             
 
-              <h1>
+              <h1 className="text-white">
                 Accede a tu cuenta
               </h1>
 
-              <p className="mt-4 fs-5">
+              <p className="mt-4 fs-5 text-white-50">
                 Continúa tu aprendizaje con ejercicios personalizados, retos motivadores
                 y seguimiento de avances en una experiencia moderna y eficiente.
               </p>
@@ -109,22 +109,22 @@ const Login = () => {
               <Row className="mt-5 g-3">
                 <Col md={4}>
                   <div className="stat-box text-center content-reveal" style={{ "--reveal-delay": "0.45s" }}>
-                    <FaGamepad size={30} />
-                    <h5 className="mt-3">Mini Juegos</h5>
+                    <FaGamepad size={30} className="text-white" />
+                    <h5 className="mt-3 text-white">Mini Juegos</h5>
                   </div>
                 </Col>
 
                 <Col md={4}>
                   <div className="stat-box text-center content-reveal" style={{ "--reveal-delay": "0.55s" }}>
-                    <FaTrophy size={30} />
-                    <h5 className="mt-3">Logros</h5>
+                    <FaTrophy size={30} className="text-white" />
+                    <h5 className="mt-3 text-white">Logros</h5>
                   </div>
                 </Col>
 
                 <Col md={4}>
                   <div className="stat-box text-center content-reveal" style={{ "--reveal-delay": "0.65s" }}>
-                    <FaGraduationCap size={30} />
-                    <h5 className="mt-3">Aprendizaje</h5>
+                    <FaGraduationCap size={30} className="text-white" />
+                    <h5 className="mt-3 text-white">Aprendizaje</h5>
                   </div>
                 </Col>
               </Row>
@@ -152,13 +152,13 @@ const Login = () => {
 />
                   </div>
 
-                  <h2 className="fw-bold text-azul-oscuro">GameLingo</h2>
+                  <h2 className="fw-bold text-white">GameLingo</h2>
 
-                  <p className="text-muted">Inicia sesión para continuar con tu progreso.</p>
-                  <p className="text-muted small">
+                  <p className="text-white-50">Inicia sesión para continuar con tu progreso.</p>
+                  <p className="text-white-50 small">
                     <span
-                      className="text-primary"
-                      style={{ cursor: "pointer", textDecoration: "underline" }}
+                      className="text-brand-orange"
+                      style={{ cursor: "pointer", textDecoration: "underline", color: "var(--brand-orange)" }}
                       onClick={() => setShowTermsModal(true)}
                     >
                       Leer términos y condiciones
@@ -166,13 +166,13 @@ const Login = () => {
                   </p>
                 </div>
 
-                {error && <Alert variant="danger">{error}</Alert>}
+                {error && <Alert variant="danger" className="rounded-4 border-0 shadow-sm">{error}</Alert>}
 
                 <Form onSubmit={handleLogin}>
                   {/* EMAIL */}
 
                   <Form.Group className="mb-4">
-                    <Form.Label>Correo electrónico</Form.Label>
+                    <Form.Label className="text-white">Correo electrónico</Form.Label>
 
                     <InputGroup>
                       <InputGroup.Text>
@@ -192,7 +192,7 @@ const Login = () => {
                   {/* PASSWORD */}
 
                   <Form.Group className="mb-4">
-                    <Form.Label>Contraseña</Form.Label>
+                    <Form.Label className="text-white">Contraseña</Form.Label>
 
                     <InputGroup>
                       <InputGroup.Text>
@@ -208,23 +208,13 @@ const Login = () => {
                       />
 
                       <Button
-                       className="
-w-full
-bg-gradient-to-r
-from-blue-900
-to-blue-700
-hover:from-blue-800
-hover:to-blue-600
-text-white
-font-bold
-py-3
-rounded-xl
-transition-all
-duration-300
-hover:-translate-y-1
-shadow-xl
-disabled:opacity-70
-"
+                        variant="outline-light"
+                        className="border-start-0"
+                        style={{ 
+                          borderTopRightRadius: '12px', 
+                          borderBottomRightRadius: '12px',
+                          backgroundColor: 'var(--glass-bg)' 
+                        }}
                         onClick={() => setMostrarPassword(!mostrarPassword)}
                       >
                         {mostrarPassword ? <FaEyeSlash /> : <FaEye />}
@@ -235,8 +225,8 @@ disabled:opacity-70
                   {/* OLVIDÉ MI CONTRASEÑA */}
                   <div className="mb-4 text-end">
                     <span
-                      className="text-primary"
-                      style={{ cursor: "pointer", fontSize: "0.9rem" }}
+                      className="text-white-50"
+                      style={{ cursor: "pointer", fontSize: "0.9rem", textDecoration: "underline" }}
                       onClick={() => setShowForgotPasswordModal(true)}
                     >
                       ¿Olvidé mi contraseña?
@@ -266,7 +256,7 @@ disabled:opacity-70
                 </Form>
 
                 <div className="text-center mt-4">
-                  <p className="mb-1">¿Aún no eres miembro?</p>
+                  <p className="mb-1 text-white">¿Aún no eres miembro?</p>
 
                   <Link
                     to="/register"

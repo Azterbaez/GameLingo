@@ -122,19 +122,19 @@ const ResetPassword = () => {
       <Container fluid className="min-vh-100 d-flex align-items-center">
         <Row className="w-100 justify-content-center">
           <Col lg={4} md={8}>
-            <Card className="border-0 shadow-lg content-reveal" style={{ "--reveal-delay": "0.3s" }}>
+            <Card className="login-card border-0 shadow-lg content-reveal" style={{ "--reveal-delay": "0.3s" }}>
               <Card.Body className="p-5">
                 <div className="text-center mb-4">
-                  <h2 className="fw-bold text-azul-oscuro">Restablecer Contraseña</h2>
-                  <p className="text-muted">Ingresa tu nueva contraseña</p>
+                  <h2 className="fw-bold text-white">Restablecer Contraseña</h2>
+                  <p className="text-white-50">Ingresa tu nueva contraseña</p>
                 </div>
 
-                {error && <Alert variant="danger">{error}</Alert>}
+                {error && <Alert variant="danger" className="rounded-4 border-0 shadow-sm">{error}</Alert>}
 
                 <Form onSubmit={handleSubmit}>
                   {/* NUEVA CONTRASEÑA */}
                   <Form.Group className="mb-4">
-                    <Form.Label>Nueva Contraseña</Form.Label>
+                    <Form.Label className="text-white">Nueva Contraseña</Form.Label>
 
                     <InputGroup>
                       <InputGroup.Text>
@@ -151,7 +151,7 @@ const ResetPassword = () => {
                       />
 
                       <Button
-                        variant="outline-secondary"
+                        variant="outline-light"
                         onClick={() => setMostrarPassword(!mostrarPassword)}
                         disabled={loading}
                       >
@@ -162,7 +162,7 @@ const ResetPassword = () => {
 
                   {/* CONFIRMAR CONTRASEÑA */}
                   <Form.Group className="mb-4">
-                    <Form.Label>Confirmar Contraseña</Form.Label>
+                    <Form.Label className="text-white">Confirmar Contraseña</Form.Label>
 
                     <InputGroup>
                       <InputGroup.Text>
@@ -179,7 +179,7 @@ const ResetPassword = () => {
                       />
 
                       <Button
-                        variant="outline-secondary"
+                        variant="outline-light"
                         onClick={() => setMostrarConfirm(!mostrarConfirm)}
                         disabled={loading}
                       >
@@ -192,7 +192,7 @@ const ResetPassword = () => {
                   <Button
                     type="submit"
                     disabled={loading}
-                    className="ui-btn-primary w-100 py-3 fw-bold"
+                    className="login-btn ui-btn-primary w-100 py-3 fw-bold"
                   >
                     {loading ? (
                       <>

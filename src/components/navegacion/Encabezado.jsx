@@ -11,6 +11,7 @@ import { supabase } from "../../assets/database/supabaseconfig";
 import NotificacionOperacion from "../NotificacionOperacione";
 import NombreMovil from "./NombreMovil";
 import BarraNavegacionMovil from "./BarraNavegacionMovil";
+import ThemeToggle from "../layout/ThemeToggle";
 
 const Encabezado = ({ modoAprendizaje = false }) => {
   const [mostrarMenu, setMostrarMenu] = useState(false);
@@ -76,6 +77,7 @@ const Encabezado = ({ modoAprendizaje = false }) => {
               <span className="navbar-brand-compact__title">GameLingo</span>
             </Navbar.Brand>
             <NombreMovil className="ms-auto me-1 navbar-aprendizaje-perfil--inline" />
+            <ThemeToggle />
             <div className="navbar-aprendizaje-perfil d-none d-md-flex align-items-center gap-2 ms-auto me-2">
               <img
                 src={perfil?.avatar || avatargiraffe}
@@ -110,6 +112,7 @@ const Encabezado = ({ modoAprendizaje = false }) => {
                 <div className="username">{perfil?.username || "Jugador"}</div>
                 <small className="level">Nivel {perfil?.level ?? 1}</small>
               </div>
+              <ThemeToggle />
             </div>
           </Navbar.Brand>
         )}
@@ -134,7 +137,7 @@ const Encabezado = ({ modoAprendizaje = false }) => {
           </Offcanvas.Header>
 
           <Offcanvas.Body>
-            <Nav className="ms-auto">
+            <Nav className="ms-auto align-items-center">
 
               <Nav.Link onClick={() => manejarNavegacion("/inicio")}>
                 Inicio
@@ -148,6 +151,10 @@ const Encabezado = ({ modoAprendizaje = false }) => {
                 Perfil
               </Nav.Link>
 
+              <div className="d-md-none w-100 text-center my-2">
+                <hr />
+                <ThemeToggle />
+              </div>
 
               <hr />
               

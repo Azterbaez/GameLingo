@@ -96,35 +96,35 @@ const Register = () => {
           {/* PANEL IZQUIERDO */}
 
           <Col lg={6} className="d-none d-lg-block">
-            <div className="hero-content content-reveal" style={{ "--reveal-delay": "0.2s" }}>
+            <div className="hero-panel content-reveal" style={{ "--reveal-delay": "0.2s" }}>
               <div className="hero-badge">
                 <span className="badge-dot"></span>
                 Aprende Jugando
               </div>
 
-              <h1 className="hero-title">
+              <h1 className="hero-title text-white">
                 Game
                 <br />
                 Lingo
               </h1>
 
-              <p className="hero-description">
+              <p className="hero-description text-white-50">
                 Aprende inglés mediante desafíos, juegos interactivos, niveles y
                 recompensas diseñadas para hacer divertido tu aprendizaje.
               </p>
 
               <div className="hero-stats">
-                <div className="stat-card content-reveal" style={{ "--reveal-delay": "0.45s" }}>
+                <div className="stat-box content-reveal text-center" style={{ "--reveal-delay": "0.45s" }}>
                   <h2>+100</h2>
                   <p>Lecciones</p>
                 </div>
 
-                <div className="stat-card content-reveal" style={{ "--reveal-delay": "0.55s" }}>
+                <div className="stat-box content-reveal text-center" style={{ "--reveal-delay": "0.55s" }}>
                   <h2>24/7</h2>
                   <p>Disponible</p>
                 </div>
 
-                <div className="stat-card content-reveal" style={{ "--reveal-delay": "0.65s" }}>
+                <div className="stat-box content-reveal text-center" style={{ "--reveal-delay": "0.65s" }}>
                   <h2>🎮</h2>
                   <p>Gamificación</p>
                 </div>
@@ -134,8 +134,8 @@ const Register = () => {
 
           {/* REGISTER */}
 
-          <Col md={10} lg={4}>
-            <Card className="login-card border-0 content-reveal" style={{ "--reveal-delay": "0.35s" }}>
+          <Col md={10} lg={6}>
+            <Card className="login-card border-0 content-reveal shadow-2xl" style={{ "--reveal-delay": "0.35s" }}>
               <Card.Body className="p-3">
                 <div className="text-center mb-4">
                   <div className=" logo-circle mb-2">
@@ -147,7 +147,7 @@ const Register = () => {
     width: "85px",
     height: "85px",
     borderRadius: "50%",
-   border: "4px solid #e4b313",
+    border: "4px solid var(--brand-orange)",
     objectFit: "cover"
   }}
 />
@@ -157,19 +157,19 @@ const Register = () => {
                     </div>
                   </div>
 
-                  <h2 className="fw-bold mb-2">Crea tu cuenta</h2>
+                  <h2 className="fw-bold mb-2 text-white">Crea tu cuenta</h2>
 
-                  <p className="text-muted">Regístrate y comienza a aprender con GameLingo.</p>
+                  <p className="text-white-50">Regístrate y comienza a aprender con GameLingo.</p>
                 </div>
 
                 {error && (
-                  <Alert variant="danger" className="rounded-4 border-0">
+                  <Alert variant="danger" className="rounded-4 border-0 shadow-sm">
                     {error}
                   </Alert>
                 )}
 
                 {success && (
-                  <Alert variant="success" className="rounded-4 border-0">
+                  <Alert variant="success" className="rounded-4 border-0 shadow-sm">
                     {success}
                   </Alert>
                 )}
@@ -178,7 +178,7 @@ const Register = () => {
                   {/* USUARIO */}
 
                   <Form.Group className="mb-3">
-                    <Form.Label>Nombre de usuario</Form.Label>
+                    <Form.Label className="text-white">Nombre de usuario</Form.Label>
 
                     <InputGroup>
                       <InputGroup.Text className="input-icon-box">
@@ -199,7 +199,7 @@ const Register = () => {
                   {/* EMAIL */}
 
                   <Form.Group className="mb-3">
-                    <Form.Label>Correo electrónico</Form.Label>
+                    <Form.Label className="text-white">Correo electrónico</Form.Label>
 
                     <InputGroup>
                       <InputGroup.Text className="input-icon-box">
@@ -220,7 +220,7 @@ const Register = () => {
                   {/* PASSWORD */}
 
                   <Form.Group className="mb-3">
-                    <Form.Label>Contraseña</Form.Label>
+                    <Form.Label className="text-white">Contraseña</Form.Label>
 
                     <InputGroup>
                       <InputGroup.Text className="input-icon-box">
@@ -241,7 +241,7 @@ const Register = () => {
                   {/* CONFIRMAR */}
 
                   <Form.Group className="mb-4">
-                    <Form.Label>Confirmar contraseña</Form.Label>
+                    <Form.Label className="text-white">Confirmar contraseña</Form.Label>
 
                     <InputGroup>
                       <InputGroup.Text className="input-icon-box">
@@ -266,7 +266,7 @@ const Register = () => {
                       checked={acceptedTerms}
                       onChange={(e) => setAcceptedTerms(e.target.checked)}
                       label={
-                        <>
+                        <span className="text-white">
                           Acepto los {" "}
                           <span
                             className="text-primary"
@@ -275,7 +275,7 @@ const Register = () => {
                           >
                             términos y condiciones
                           </span>
-                        </>
+                        </span>
                       }
                       required
                     />
@@ -284,7 +284,7 @@ const Register = () => {
                   <Button
                     type="submit"
                     disabled={loading || !acceptedTerms}
-                    className="login-btn ui-btn-primary w-100 py-2 fw-bold rounded-1"
+                    className="login-btn ui-btn-primary w-100 py-3 fw-bold"
                   >
                     {loading ? (
                       <>
@@ -307,7 +307,7 @@ const Register = () => {
                 <TermsModal show={showTermsModal} onHide={() => setShowTermsModal(false)} />
 
                 <div className="text-center mt-4">
-                  <p className="mb-0">
+                  <p className="mb-0 text-white">
                     ¿Ya formas parte de GameLingo? {" "}
                     <Link
                       to="/login"
