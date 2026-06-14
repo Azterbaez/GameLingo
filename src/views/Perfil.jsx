@@ -34,9 +34,38 @@ import estudiante from "../assets/image/estudiante.png";
 import estudiante2 from "../assets/image/estudiante2.png";
 import estudiante3 from "../assets/image/estudiante3.png";
 
-
-
 import { usePerfil } from "../context/PerfilContext";
+
+const AVATARES = [
+  avatargiraffe,
+  avatarkoala,
+  avatarlion,
+  avatarmonkey,
+  avatarowl,
+  avatarshield,
+  avatarzorra,
+  avatarF1,
+  avatarF2,
+  avatarF3,
+  avatarF4,
+  avatarF5,
+  avatarM1,
+  avatarM2,
+  avatarM3,
+  avatarM4,
+  avatarM5,
+  adolescente,
+  agente1,
+  agente2,
+  agente3,
+  agente4,
+  agente5,
+  agente6,
+  agente7,
+  estudiante,
+  estudiante2,
+  estudiante3,
+];
 
 const Perfil = () => {
   const { perfil, updatePerfil, loading } = usePerfil();
@@ -81,135 +110,102 @@ const Perfil = () => {
   if (loading) {
     return (
       <div className="perfil-page d-flex justify-content-center align-items-center min-vh-100">
-        <h3 className="text-white">Cargando perfil...</h3>
+        <h3 className="perfil-loading">Cargando perfil...</h3>
       </div>
     );
   }
 
   return (
-  <div className="perfil-page pagina-con-nav-movil">
-    <PaginaMeta titulo="Mi perfil" />
-    <Container className="d-flex justify-content-center align-items-center min-vh-100 py-5">
-      <Card
-        className="perfil-card shadow-lg border-0 content-reveal"
-      >
-        <h2 className="text-center mb-4 fw-bold">
-          Mi perfil
-        </h2>
-        <p className="text-center text-muted mb-4">
-          Personaliza tu perfil, elige un avatar y mantén tu cuenta lista para seguir aprendiendo.
-        </p>
-
-        {/* Avatar principal */}
-        <div className="text-center mb-4">
-          <img
-            src={avatar || avatargiraffe}
-            alt="Avatar seleccionado"
-            className="perfil-avatar-principal"
-          />
-        </div>
-
-        <Form>
-          <Form.Group className="mb-3">
-            <Form.Label>Nombre de usuario</Form.Label>
-
-            <Form.Control
-              type="text"
-              placeholder="Ingresa tu nombre de usuario"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              className="ui-input"
-            />
-          </Form.Group>
-
-          <Form.Group className="mb-4">
-            <Form.Label>Biografía</Form.Label>
-
-            <Form.Control
-              as="textarea"
-              rows={4}
-              placeholder="Describe tus intereses o metas de aprendizaje"
-              value={bio}
-              onChange={(e) => setBio(e.target.value)}
-              className="ui-input"
-            />
-          </Form.Group>
-
-  <Button
-            type="button"
-            className="w-100 mt-4"
-            onClick={handleSave}
-          >
-            Guardar cambios
-          </Button>
-          <div className="text-center mt-2">
-            <Link
-              to="/inicio"
-              className="fw-bold text-decoration-none"
-              style={{ color: "#f59e0b" }}
-            >
-              Volver al inicio
-            </Link>
-          </div>
-
-          <Form.Label className="fw-bold mb-3">
-            Selecciona tu avatar
-          </Form.Label>
-
-          <div className="avatar-selector-grid">
-            {[
-              avatargiraffe,
-              avatarkoala,
-              avatarlion,
-              avatarmonkey,
-              avatarowl,
-              avatarshield,
-              avatarzorra,
-              avatarF1,
-              avatarF2,
-              avatarF3,
-              avatarF4,
-              avatarF5,
-              avatarM1,
-              avatarM2,
-              avatarM3,
-              avatarM4,
-              avatarM5,
-              adolescente,
-              agente1,
-              agente2,
-              agente3,
-              agente4,
-              agente5,
-              agente6,
-              agente7,
-              estudiante,
-              estudiante2,
-              estudiante3,
-            ].map((img, i) => (
+    <div className="perfil-page pagina-con-nav-movil">
+      <PaginaMeta titulo="Mi perfil" />
+      <Container className="d-flex justify-content-center align-items-center min-vh-100 py-5">
+        <Card className="perfil-card shadow-lg border-0 content-reveal">
+          <div className="perfil-hero">
+            <div className="perfil-avatar-wrap">
               <img
-                key={i}
-                src={img}
-                alt={`avatar-${i}`}
-                onClick={() => setAvatar(img)}
-                className={`avatar-item ${avatar === img ? 'selected' : ''}`}
+                src={avatar || avatargiraffe}
+                alt="Avatar seleccionado"
+                className="perfil-avatar-principal"
               />
-            ))}
+            </div>
+            <div className="perfil-hero-copy">
+              <span className="perfil-eyebrow">Cuenta de aprendizaje</span>
+              <h2>Mi perfil</h2>
+              <p>
+                Personaliza tu perfil, elige un avatar y mantén tu cuenta lista para seguir aprendiendo.
+              </p>
+            </div>
           </div>
 
-        
-        </Form>
-      </Card>
-    </Container>
-    {(
+          <Form className="perfil-form">
+            <Form.Group className="mb-3">
+              <Form.Label>Nombre de usuario</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Ingresa tu nombre de usuario"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                className="ui-input"
+              />
+            </Form.Group>
+
+            <Form.Group className="mb-4">
+              <Form.Label>Biografía</Form.Label>
+              <Form.Control
+                as="textarea"
+                rows={4}
+                placeholder="Describe tus intereses o metas de aprendizaje"
+                value={bio}
+                onChange={(e) => setBio(e.target.value)}
+                className="ui-input perfil-textarea"
+              />
+            </Form.Group>
+
+            <div className="perfil-actions">
+              <Button type="button" className="perfil-save-btn" onClick={handleSave}>
+                Guardar cambios
+              </Button>
+              <Link to="/inicio" className="perfil-back-link">
+                Volver al inicio
+              </Link>
+            </div>
+
+            <div className="perfil-avatar-section">
+              <div>
+                <Form.Label className="perfil-section-label">
+                  Selecciona tu avatar
+                </Form.Label>
+                <p className="perfil-section-help">
+                  Elige el personaje que quieres mostrar en tu cuenta.
+                </p>
+              </div>
+
+              <div className="avatar-selector-grid">
+                {AVATARES.map((img, i) => (
+                  <button
+                    key={i}
+                    type="button"
+                    className={`avatar-item-btn ${avatar === img ? "selected" : ""}`}
+                    onClick={() => setAvatar(img)}
+                    aria-label={`Seleccionar avatar ${i + 1}`}
+                  >
+                    <img src={img} alt="" className="avatar-item" />
+                  </button>
+                ))}
+              </div>
+            </div>
+          </Form>
+        </Card>
+      </Container>
+
       <NotificacionOperacion
         mostrar={mostrarNoti}
         mensaje={notiMensaje}
         tipo={notiTipo}
         onCerrar={() => setMostrarNoti(false)}
       />
-    )}
-  </div>
-);
+    </div>
+  );
 };
+
 export default Perfil;
