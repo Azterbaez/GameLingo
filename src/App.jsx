@@ -9,6 +9,7 @@ import ResetPassword from "./views/ResetPassword";
 import Informacion from "./views/Informacion";
 import Inicio from "./views/Inicio";
 import Perfil from "./views/Perfil";
+import LandingPage from "./views/LandingPage";
 import { PerfilProvider } from "./context/PerfilContext";
 import RutaProtegida from "./components/rutas/RutasProtegida";
 import { UserProvider } from "./context/UserContext";
@@ -25,7 +26,7 @@ import CursoSubnivelView from "./views/CursoSubnivelView";
 function Layout() {
   return (
     <Routes>
-      <Route path="/" element={<AnimatedRoute><Informacion /></AnimatedRoute>} />
+      <Route path="/" element={<AnimatedRoute><LandingPage /></AnimatedRoute>} />
       <Route path="/login" element={<AnimatedRoute><Login /></AnimatedRoute>} />
       <Route path="/register" element={<AnimatedRoute><Register /></AnimatedRoute>} />
       <Route path="/reset-password" element={<AnimatedRoute><ResetPassword /></AnimatedRoute>} />

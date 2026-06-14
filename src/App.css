@@ -1,4 +1,16 @@
 
+:root {
+  /* Paleta Profesional Azter */
+  --brand-blue-deep: #0f172a;    /* Azul Slate muy oscuro para profundidad */
+  --brand-blue-main: #1e40af;    /* Azul medio para identidad */
+  --brand-blue-light: #3b82f6;   /* Azul brillante para interacción */
+  --brand-orange: #f59e0b;       /* Naranja ámbar principal */
+  --brand-orange-light: #fbbf24; /* Naranja suave para hovers */
+  --glass-bg: rgba(255, 255, 255, 0.03);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+}
 
 
 .margen-superior-main {
@@ -18,6 +30,8 @@ body {
     #2563eb,
     #60a5fa
   );
+  background-color: var(--brand-blue-deep);
+  color: var(--text-main);
 }
 
 /* =========================
@@ -26,6 +40,8 @@ body {
 
 .text-naranja {
   color: #f59e0b !important;
+  color: var(--brand-orange) !important;
+  text-shadow: 0 0 20px rgba(245, 158, 11, 0.3);
 }
 
 .text-azul {
@@ -167,6 +183,10 @@ body {
     #1439b6 0%,
     #061d4e 55%,
     #7db6fc 100%
+    160deg,
+    var(--brand-blue-deep) 0%,
+    #1e1b4b 50%,
+    var(--brand-blue-deep) 100%
   );
 }
 
@@ -177,11 +197,15 @@ body {
 
   backdrop-filter: blur(12px);
 
+  background: rgba(15, 23, 42, 0.8) !important;
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border) !important;
   border-radius: 30px !important;
 
   box-shadow:
     0 25px 60px rgba(0,0,0,.20) !important;
 
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5) !important;
   position: relative;
   z-index: 2;
 }
@@ -227,6 +251,9 @@ body {
 
   backdrop-filter: blur(12px);
 
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
   border-radius: 20px;
 
   padding: 25px;
@@ -259,17 +286,23 @@ body {
     #2563eb
   ) !important;
 
+  background: var(--brand-orange) !important;
+  color: var(--brand-blue-deep) !important;
   border: none !important;
 
   font-weight: 700 !important;
 
   border-radius: 15px !important;
 
+  box-shadow: 0 10px 15px -3px rgba(245, 158, 11, 0.3) !important;
   transition: .3s;
 }
 
 .login-btn:hover {
   transform: translateY(-2px);
+  transform: translateY(-3px);
+  background: var(--brand-orange-light) !important;
+  box-shadow: 0 20px 25px -5px rgba(245, 158, 11, 0.4) !important;
 }
 
 .informacion-page {
@@ -277,6 +310,11 @@ body {
   position: relative;
   overflow: hidden;
   background: linear-gradient(180deg,  #ec9411 0%, #2d50c5 100%);
+  background: radial-gradient(
+    circle at top right,
+    #1e1b4b,
+    var(--brand-blue-deep)
+  );
 }
 
 .informacion-content {
@@ -320,6 +358,8 @@ body {
 .info-card {
   transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
   border: 1px solid rgba(37, 99, 235, 0.08) !important;
+  background: var(--glass-bg) !important;
+  border: 1px solid var(--glass-border) !important;
 }
 
 .info-card:hover,
@@ -327,6 +367,9 @@ body {
   transform: translateY(-10px) scale(1.01);
   box-shadow: 0 24px 60px rgba(18, 83, 218, 0.14);
   border-color: rgba(245, 159, 11, 0.692) !important;
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  border-color: var(--brand-orange) !important;
   outline: none;
 }
 
@@ -405,8 +448,8 @@ body {
 @keyframes pageRevealIn {
   from {
     opacity: 0;
-    transform: translate3d(0, 28px, 0) scale(0.965);
-    filter: blur(10px);
+    transform: translate3d(0, 30px, 0) scale(0.99);
+    filter: blur(8px);
   }
   to {
     opacity: 1;
@@ -418,12 +461,12 @@ body {
 @keyframes pageRevealForwardIn {
   0% {
     opacity: 0;
-    transform: translate3d(56px, 12px, 0) scale(0.94);
-    filter: blur(12px);
+    transform: translate3d(40px, 0, 0) scale(0.98);
+    filter: blur(8px);
   }
   55% {
-    opacity: 0.85;
-    filter: blur(3px);
+    opacity: 0.9;
+    filter: blur(2px);
   }
   100% {
     opacity: 1;
@@ -435,12 +478,12 @@ body {
 @keyframes pageRevealBackIn {
   0% {
     opacity: 0;
-    transform: translate3d(-56px, 12px, 0) scale(0.94);
-    filter: blur(12px);
+    transform: translate3d(-40px, 0, 0) scale(0.98);
+    filter: blur(8px);
   }
   55% {
-    opacity: 0.85;
-    filter: blur(3px);
+    opacity: 0.9;
+    filter: blur(2px);
   }
   100% {
     opacity: 1;
@@ -452,11 +495,11 @@ body {
 @keyframes pageRevealInSlow {
   0% {
     opacity: 0;
-    transform: translate3d(0, 40px, 0) scale(0.92);
-    filter: blur(14px);
+    transform: translate3d(0, 40px, 0) scale(0.98);
+    filter: blur(10px);
   }
   50% {
-    opacity: 0.8;
+    opacity: 0.85;
     filter: blur(4px);
   }
   100% {
@@ -469,10 +512,10 @@ body {
 @keyframes cardRevealUp {
   0% {
     opacity: 0;
-    transform: translate3d(0, 36px, 0) scale(0.9);
+    transform: translate3d(0, 40px, 0) scale(0.96);
   }
   60% {
-    opacity: 0.9;
+    opacity: 0.95;
   }
   100% {
     opacity: 1;
@@ -492,8 +535,8 @@ body {
 }
 
 .animated-view {
-  --anim-duration: 420ms;
-  --anim-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --anim-duration: 450ms;
+  --anim-ease: cubic-bezier(0.16, 1, 0.3, 1);
   opacity: 1;
   transform: translate3d(0, 0, 0) scale(1);
   filter: blur(0);
@@ -580,13 +623,13 @@ body {
 
 .animated-view.page-reveal.leaving-forward,
 .animated-view.leaving-forward {
-  transform: translate3d(-36px, -6px, 0) scale(0.97);
+  transform: translate3d(-40px, 0, 0) scale(0.99);
   filter: blur(6px);
 }
 
 .animated-view.page-reveal.leaving-back,
 .animated-view.leaving-back {
-  transform: translate3d(36px, -6px, 0) scale(0.97);
+  transform: translate3d(40px, 0, 0) scale(0.99);
   filter: blur(6px);
 }
 
