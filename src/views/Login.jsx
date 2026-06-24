@@ -84,8 +84,8 @@ const Login = () => {
 <div className="shape shape-4"></div>
 
 
-      <Container fluid className="min-vh-100 d-flex align-items-center">
-        <Row className="w-100 align-items-center justify-content-center">
+      <Container fluid className="login-shell min-vh-100 d-flex align-items-center">
+        <Row className="login-row w-100 align-items-center justify-content-center">
           {/* PANEL IZQUIERDO */}
 
           <Col lg={6} className="d-none d-lg-block">
@@ -133,9 +133,9 @@ const Login = () => {
 
           {/* LOGIN */}
 
-          <Col lg={4} md={8}>
-            <Card className="login-card border-0 content-reveal" style={{ "--reveal-delay": "0.35s" }}>
-              <Card.Body className="p-5">
+          <Col lg={4} md={8} sm={10} xs={12} className="login-form-col">
+            <Card className="login-card login-form-card border-0 content-reveal" style={{ "--reveal-delay": "0.35s" }}>
+              <Card.Body className="login-card-body p-5">
                 <div className="text-center mb-4">
                   <div className="logo-circle mb-3">
                    <img
@@ -143,8 +143,8 @@ const Login = () => {
   alt="GameLingo"
   className="mx-auto shadow-lg"
   style={{
-    width: "85px",
-    height: "85px",
+    width: "70px",
+    height: "70px",
     borderRadius: "70%",
     border: "7px solid rgba(8, 22, 209, 1)",
     objectFit: "cover"

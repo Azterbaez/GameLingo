@@ -251,6 +251,19 @@ body {
   z-index: 2;
 }
 
+.login-shell {
+  padding: 2rem 1rem;
+}
+
+.login-form-col {
+  display: flex;
+  justify-content: center;
+}
+
+.login-form-card {
+  width: min(100%, 460px);
+}
+
 [data-theme='light'] .login-card {
   background: #ffffff !important;
   border-color: rgba(15, 23, 42, 0.1) !important;
@@ -1031,6 +1044,113 @@ body {
 
 @media (max-width: 992px) {
   .hero-panel {
+    display: none;
+  }
+}
+
+@media (max-width: 576px) {
+  .login-page {
+    min-height: 100svh;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  .login-shell {
+    min-height: 100svh !important;
+    align-items: flex-start !important;
+    padding: max(1rem, env(safe-area-inset-top)) 0.85rem max(1.25rem, env(safe-area-inset-bottom));
+  }
+
+  .login-row {
+    margin: 0;
+  }
+
+  .login-form-col {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .login-form-card {
+    border-radius: 22px !important;
+    box-shadow: 0 18px 38px rgba(0, 0, 0, 0.28) !important;
+  }
+
+  .login-card-body {
+    padding: 1.35rem !important;
+  }
+
+  .login-card .text-center.mb-4 {
+    margin-bottom: 1rem !important;
+  }
+
+  .login-card h2 {
+    font-size: 1.55rem;
+  }
+
+  .login-card p {
+    font-size: 0.92rem;
+    margin-bottom: 0.45rem;
+  }
+
+  .logo-circle {
+    width: 72px;
+    height: 72px;
+  }
+
+  .logo-circle img {
+    border-width: 5px !important;
+  }
+
+  .login-card .form-label {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+  }
+
+  .login-card .mb-4 {
+    margin-bottom: 1rem !important;
+  }
+
+  .login-card .input-group,
+  .login-card .custom-input,
+  .login-card .input-group-text,
+  .login-card .input-group .btn {
+    min-height: 48px;
+  }
+
+  .login-card .custom-input,
+  .login-card .input-group-text,
+  .login-card .input-group .btn {
+    font-size: 0.95rem;
+  }
+
+  .login-btn {
+    min-height: 50px;
+    border-radius: 14px !important;
+  }
+
+  .login-page .blur {
+    filter: blur(80px);
+    opacity: 0.18;
+  }
+
+  .login-page .shape {
+    opacity: 0.35;
+    transform: scale(0.7);
+  }
+
+  .blur-1 {
+    top: -140px;
+    left: -160px;
+  }
+
+  .blur-2 {
+    right: -160px;
+    bottom: -150px;
+  }
+
+  .blur-3,
+  .shape-1,
+  .shape-3 {
     display: none;
   }
 }
