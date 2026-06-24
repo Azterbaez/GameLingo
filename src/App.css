@@ -229,6 +229,25 @@ body {
   background: var(--app-bg);
 }
 
+.landing-page {
+  min-height: 100vh;
+  min-height: 100dvh;
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background: var(--app-bg);
+  padding: 80px 0;
+}
+
+:root:not([data-theme='light']) .landing-page {
+  background: linear-gradient(
+    160deg,
+    var(--brand-blue-deep) 0%,
+    #1e1b4b 50%,
+    var(--brand-blue-deep) 100%
+  );
+}
+
 /* Degradado solo para el modo oscuro del login */
 :root:not([data-theme='light']) .login-page {
   background: linear-gradient(
@@ -385,8 +404,10 @@ body {
 
 .informacion-page {
   min-height: 100vh;
+  min-height: 100dvh;
   position: relative;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
   background: var(--app-bg);
 }
 
@@ -1043,12 +1064,114 @@ body {
 ========================= */
 
 @media (max-width: 992px) {
-  .hero-panel {
+  .login-page .hero-panel {
     display: none;
+  }
+
+  .landing-page {
+    align-items: flex-start !important;
+    padding: 48px 0;
+  }
+
+  .landing-page .hero-panel {
+    display: block;
+    padding-right: 0;
+    text-align: center !important;
+  }
+
+  .landing-page .hero-panel p {
+    max-width: 100% !important;
+  }
+
+  .landing-page .hero-panel .d-flex {
+    justify-content: center;
   }
 }
 
 @media (max-width: 576px) {
+  .landing-page,
+  .informacion-page {
+    min-height: 100svh;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .landing-page {
+    padding-top: max(1.5rem, env(safe-area-inset-top));
+    padding-bottom: max(1.5rem, env(safe-area-inset-bottom));
+  }
+
+  .landing-page .container,
+  .informacion-page .container {
+    width: 100%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .landing-page .hero-panel h1 {
+    font-size: 2.15rem;
+    line-height: 1.12;
+    margin-bottom: 1rem !important;
+  }
+
+  .landing-page .hero-panel .lead {
+    font-size: 1rem !important;
+    margin-bottom: 1.5rem !important;
+  }
+
+  .landing-page .login-btn,
+  .landing-page .btn-outline-light {
+    width: 100%;
+    padding: 0.85rem 1rem !important;
+    font-size: 1rem !important;
+  }
+
+  .landing-page .stat-box {
+    padding: 1rem;
+    border-radius: 16px;
+  }
+
+  .landing-page .info-card {
+    margin-bottom: 1rem !important;
+  }
+
+  .landing-page .card-body {
+    padding: 1rem !important;
+  }
+
+  .landing-page .rounded-circle {
+    width: 48px !important;
+    height: 48px !important;
+    min-width: 48px;
+    margin-right: 0.85rem !important;
+    font-size: 1.15rem !important;
+  }
+
+  .informacion-content {
+    padding-top: max(1.5rem, env(safe-area-inset-top)) !important;
+    padding-bottom: max(1.5rem, env(safe-area-inset-bottom)) !important;
+  }
+
+  .informacion-content h1 {
+    font-size: 2rem;
+  }
+
+  .informacion-content .lead {
+    font-size: 1rem;
+  }
+
+  .informacion-bg-shape {
+    opacity: 0.35;
+  }
+
+  .shape-book-2 {
+    right: -140px;
+  }
+
+  .shape-book-3 {
+    bottom: -90px;
+  }
+
   .login-page {
     min-height: 100svh;
     overflow-x: hidden;

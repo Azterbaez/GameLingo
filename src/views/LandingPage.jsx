@@ -9,7 +9,7 @@ import { NIVELES } from '../data/cursosIngles';
  */
 const LandingPage = () => {
   return (
-    <div className="login-page d-flex align-items-center position-relative overflow-hidden" style={{ minHeight: '100vh', paddingTop: '80px', paddingBottom: '80px' }}>
+    <div className="landing-page d-flex align-items-center position-relative">
       {/* Elementos decorativos de fondo (usando tus clases de App.css) */}
       <div className="blur blur-1"></div>
       <div className="blur blur-2"></div>
