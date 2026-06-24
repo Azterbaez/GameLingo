@@ -24,7 +24,7 @@ import {
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
-import logo from "../assets/image/logo.png";
+import logo from "../assets/image/logo.webp";
 import NotificacionOperacion from "../components/NotificacionOperacione";
 import TermsModal from "../components/TermsModal";
 import ForgotPasswordModal from "../components/ForgotPasswordModal";

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
-import logo from "../assets/image/logo.png";
+import logo from "../assets/image/logo.webp";
 import TermsModal from "../components/TermsModal";
 
 import {

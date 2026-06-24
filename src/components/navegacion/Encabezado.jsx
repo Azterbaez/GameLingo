@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { Container, Nav, Navbar, Offcanvas } from "react-bootstrap";
 
-import logo from "../../assets/image/logo.png";
+import logo from "../../assets/image/logo.webp";
 import avatargiraffe from "../../assets/image/Avatargiraffe.png";
 
 import { usePerfil } from "../../context/PerfilContext";

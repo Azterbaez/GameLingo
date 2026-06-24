@@ -17,7 +17,7 @@ const Inicio = () => {
             Bienvenido a GameLingo
           </h1>
 
-          <p className="mt-3" style={{ color: "#6B7280" }}>
+          <p className="mt-3" style={{ color: "#ffaa2c" }}>
             Cursos básicos con vocabulario y ejercicios cortos: saludos, números, colores y más.
             Fácil de seguir, paso a paso.
           </p>
